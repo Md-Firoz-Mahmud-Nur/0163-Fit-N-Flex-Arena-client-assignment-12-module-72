@@ -18,7 +18,7 @@ const Footer = () => {
         </svg>
 
         <div className="text-2xl font-semibold">
-        Fit N Flex Arena
+          Fit N Flex Arena
           <br />
           <div className="mt-2 text-base font-normal">
             Providing fitness service since 2023
@@ -29,7 +29,7 @@ const Footer = () => {
         </div>
       </aside>
       <nav>
-        <h6 className="footer-title">Contact</h6>
+        <h6 className="footer-title text-amber-600 text-opacity-85">Contact</h6>
         <a className="link-hover link">HelpLine : +12 345 67 89</a>
         <div className="">
           <a className="link-hover link flex">
@@ -42,20 +42,20 @@ const Footer = () => {
         </div>
       </nav>
       <nav>
-        <h6 className="footer-title">Services</h6>
+        <h6 className="footer-title text-amber-600 text-opacity-85">Services</h6>
         <a className="link-hover link">Branding</a>
         <a className="link-hover link">Design</a>
         <a className="link-hover link">Marketing</a>
         <a className="link-hover link">Advertisement</a>
       </nav>
       <nav>
-        <h6 className="footer-title">Company</h6>
+        <h6 className="footer-title text-amber-600 text-opacity-85">Company</h6>
         <a className="link-hover link">About us</a>
         <a className="link-hover link">Jobs</a>
         <a className="link-hover link">Press kit</a>
       </nav>
       <nav>
-        <h6 className="footer-title">Social</h6>
+        <h6 className="footer-title text-amber-600 text-opacity-85">Social</h6>
         <div className="grid grid-flow-col gap-4">
           <a>
             <svg
