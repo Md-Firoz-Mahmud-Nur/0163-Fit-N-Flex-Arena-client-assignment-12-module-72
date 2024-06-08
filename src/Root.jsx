@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 
@@ -6,6 +7,7 @@ const Root = () => {
     <div>
       <Navbar></Navbar>
       root
+      <Footer></Footer>
     </div>
   );
 };
