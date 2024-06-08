@@ -61,7 +61,7 @@ const Register = () => {
             <h1 className="text-5xl font-bold text-amber-500">
               Please Register!
             </h1>
-            <p className="py-6 text-amber-500">
+            <p className="py-6 text-amber-700">
               Unlock your dream with our comprehensive Dream Tourism listings.
               Register today for exclusive access to prime services and
               personalized assistance.

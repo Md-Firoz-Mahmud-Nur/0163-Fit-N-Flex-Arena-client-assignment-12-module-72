@@ -1,6 +1,16 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const Navbar = () => {
+  const { user, signOutUser, setUser } = useContext(AuthContext);
+  const signOut = () => {
+    signOutUser()
+      .then(() => {
+        setUser(null);
+      })
+      .catch(() => {});
+  };
   const links = (
     <>
       <li>
@@ -73,12 +83,34 @@ const Navbar = () => {
         <ul className="menu menu-horizontal bg-amber-50 px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
-        <Link
-          to="/login"
-          className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
-        >
-          Login
-        </Link>
+        {user ? (
+          <>
+            <div
+              className="tooltip tooltip-bottom"
+              data-tip={
+                user.displayName ? user.displayName : "user name not found"
+              }
+            >
+              <div className="mr-2 size-10 rounded-full border-2 border-amber-500">
+                <img className="rounded-full" alt="" src={user.photoURL} />
+              </div>
+            </div>
+            <Link
+              onClick={signOut}
+              to="/"
+              className="hover:bg-amber-500hover:text-white btn border-2 border-amber-500 bg-transparent text-lg text-amber-500 hover:border-amber-500"
+            >
+              Logout
+            </Link>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
