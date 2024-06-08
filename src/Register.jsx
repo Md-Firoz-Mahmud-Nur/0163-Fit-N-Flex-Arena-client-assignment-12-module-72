@@ -15,13 +15,33 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async(e) => {
     e.preventDefault();
 
     const name = e.target.name.value;
     const photoUrl = e.target.url.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    const newUser = {
+      name,
+      photoUrl,
+      email,
+      password,
+      role: "member"
+    }
+
+
+    const response = await fetch(
+      `${import.meta.env.VITE_SERVER}/users`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      },
+    );
 
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters");
