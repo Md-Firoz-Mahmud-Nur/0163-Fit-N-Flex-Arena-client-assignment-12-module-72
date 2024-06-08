@@ -6,7 +6,8 @@ const ErrorPage = () => {
   return (
     <div
       id="error-page"
-      className="flex h-screen flex-col items-center justify-center text-center">
+      className="flex h-screen flex-col items-center justify-center text-center"
+    >
       <Lottie
         animationData={errorAnimation}
         loop={true}
@@ -21,8 +22,9 @@ const ErrorPage = () => {
         </p>
         <br />
         <Link
-          className="btn btn-outline   border-2  border-amber-500 bg-transparent text-xl   text-amber-500  hover:border-amber-500 hover:bg-amber-500 hover:text-white"
-          to="/">
+          className="btn btn-outline mb-20 border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
+          to="/"
+        >
           Home
         </Link>
       </div>
