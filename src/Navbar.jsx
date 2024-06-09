@@ -15,7 +15,9 @@ const Navbar = () => {
     <>
       <li>
         <Link to="/" className="md:hidden">
-          Fit N Flex Arena
+          <div>
+            Fit <span className="text-amber-500">N</span> Flex Arena
+          </div>
         </Link>
       </li>
       <li>
@@ -76,7 +78,7 @@ const Navbar = () => {
           to="/"
           className="btn btn-ghost hidden items-center p-0 pl-2 text-2xl md:flex"
         >
-          Fit N Flex Arena
+          Fit <span className="text-amber-500">N</span> Flex Arena
         </Link>
       </div>
       <div className="navbar-center hidden lg:ml-20 lg:flex">

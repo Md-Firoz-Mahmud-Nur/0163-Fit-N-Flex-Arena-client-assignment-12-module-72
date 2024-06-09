@@ -18,7 +18,7 @@ const Footer = () => {
         </svg>
 
         <div className="text-2xl font-semibold">
-          Fit N Flex Arena
+          Fit <span className="text-amber-500">N</span> Flex Arena
           <br />
           <div className="mt-2 text-base font-normal">
             Providing fitness service since 2023
