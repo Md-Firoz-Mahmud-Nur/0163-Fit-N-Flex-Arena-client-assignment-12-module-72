@@ -9,6 +9,7 @@ import Login from "./Login.jsx";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./AuthProvider.jsx";
 import Register from "./Register.jsx";
+import AllTrainer from "./AllTrainer/AllTrainer.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/allTrainer",
+        element: <AllTrainer></AllTrainer>,
       },
     ],
   },
