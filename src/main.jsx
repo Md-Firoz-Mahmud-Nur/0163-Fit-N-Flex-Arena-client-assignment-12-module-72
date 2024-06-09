@@ -10,6 +10,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./AuthProvider.jsx";
 import Register from "./Register.jsx";
 import AllTrainer from "./AllTrainer/AllTrainer.jsx";
+import BecomeATrainer from "./AllTrainer/BecomeATrainer.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,16 +34,22 @@ const router = createBrowserRouter([
         path: "/allTrainer",
         element: <AllTrainer></AllTrainer>,
       },
+      {
+        path: "/becomeATrainer",
+        element: <BecomeATrainer></BecomeATrainer>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-      </HelmetProvider>
-    </AuthProvider>
-  </React.StrictMode>
+  <div className="container mx-auto">
+    <React.StrictMode>
+      <AuthProvider>
+        <HelmetProvider>
+          <RouterProvider router={router} />
+        </HelmetProvider>
+      </AuthProvider>
+    </React.StrictMode>
+  </div>,
 );
