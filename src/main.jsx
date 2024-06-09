@@ -11,6 +11,7 @@ import AuthProvider from "./AuthProvider.jsx";
 import Register from "./Register.jsx";
 import AllTrainer from "./AllTrainer/AllTrainer.jsx";
 import BecomeATrainer from "./AllTrainer/BecomeATrainer.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/becomeATrainer",
-        element: <BecomeATrainer></BecomeATrainer>,
+        element: (
+          <PrivateRoute>
+            <BecomeATrainer></BecomeATrainer>
+          </PrivateRoute>
+        ),
       },
     ],
   },

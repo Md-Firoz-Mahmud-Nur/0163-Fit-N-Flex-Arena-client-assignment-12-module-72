@@ -71,6 +71,7 @@ const BecomeATrainer = () => {
           skills: selectedSkills,
           availableDays: selectedDayValues,
           availableTimes: selectedTimeValues,
+          status: "pending"
         }),
       });
       if (response.ok) {
