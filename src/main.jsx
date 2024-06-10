@@ -14,6 +14,7 @@ import BecomeATrainer from "./AllTrainer/BecomeATrainer.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AllUsers from "./Dashboard/AllUsers.jsx";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
           {
             path: "login",
             element: <Login></Login>,
+          },
+          {
+            path: "allUsers",
+            element: <AllUsers></AllUsers>,
           },
         ],
       },

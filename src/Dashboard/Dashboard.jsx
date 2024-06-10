@@ -11,6 +11,8 @@ const Dashboard = () => {
         <NavLink to="home">Home</NavLink>
         <br />
         <NavLink to="login">Login</NavLink>
+        <br />
+        <NavLink to="allUsers">All Users</NavLink>
       </div>
       <div className="flex-1">
         <Outlet></Outlet>
