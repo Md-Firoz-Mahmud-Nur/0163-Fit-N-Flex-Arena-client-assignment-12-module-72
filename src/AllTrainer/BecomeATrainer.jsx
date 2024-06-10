@@ -5,6 +5,7 @@ import Select from "react-select";
 const BecomeATrainer = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
+
   const skills = [
     { value: "JavaScript", label: "JavaScript" },
     { value: "React", label: "React" },
@@ -53,13 +54,13 @@ const BecomeATrainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const form = e.target;
+    const fullName = form.fullName.value;
+    const email = form.email.value;
+    const age = form.age.value;
     const selectedSkillsValues = selectedSkills.map((skill) => skill.value);
     const selectedDayValues = selectedDays.map((day) => day.value);
     const selectedTimeValues = selectedTimes.map((time) => time.value);
-    console.log(selectedSkillsValues);
-    console.log(selectedDayValues);
-    console.log(selectedTimeValues);
 
     try {
       const response = await fetch("http://localhost:3000/users", {
@@ -68,10 +69,13 @@ const BecomeATrainer = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          skills: selectedSkills,
+          skills: selectedSkillsValues,
           availableDays: selectedDayValues,
           availableTimes: selectedTimeValues,
-          status: "pending"
+          status: "pending",
+          fullName,
+          email,
+          age,
         }),
       });
       if (response.ok) {
@@ -126,29 +130,30 @@ const BecomeATrainer = () => {
               type="number"
               min={0}
               className="input input-bordered w-full"
-              name="email"
+              name="age"
               placeholder="Enter Your Age"
               required
             />
           </label>
         </div>
+
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
-            <span className="label-text">Profile Image</span>
+            <span className="label-text">Applied For</span>
           </label>
           <label className="input-group">
             <input
-              type="url"
+              type="text"
               min={0}
               className="input input-bordered w-full"
-              name="profileImage"
-              placeholder="Profile Image URL"
-              defaultValue={user?.photoURL}
+              name="applierFor"
+              placeholder=""
               required
+              defaultValue="Trainer"
+              disabled
             />
           </label>
         </div>
-
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
             <span className="label-text">Available Days</span>
@@ -164,6 +169,23 @@ const BecomeATrainer = () => {
               required
             />
           </div>
+        </div>
+
+        <div className="form-control col-span-2 w-full md:col-span-1">
+          <label className="label">
+            <span className="label-text">Profile Image URL</span>
+          </label>
+          <label className="input-group">
+            <input
+              type="url"
+              min={0}
+              className="input input-bordered w-full"
+              name="profileImage"
+              placeholder="Profile Image URL"
+              defaultValue={user?.photoURL}
+              required
+            />
+          </label>
         </div>
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
@@ -181,7 +203,7 @@ const BecomeATrainer = () => {
             />
           </div>
         </div>
-        <div className="form-control col-span-2 w-full md:col-span-2">
+        <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
             <span className="label-text">Skills</span>
           </label>
