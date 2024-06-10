@@ -48,10 +48,6 @@ const BecomeATrainer = () => {
     setSelectedTimes(selectedOptions);
   };
 
-  console.log(selectedSkills);
-  console.log(selectedDays);
-  console.log(selectedTimes);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
