@@ -12,6 +12,8 @@ import Register from "./Register.jsx";
 import AllTrainer from "./AllTrainer/AllTrainer.jsx";
 import BecomeATrainer from "./AllTrainer/BecomeATrainer.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
+import Dashboard from "./Dashboard/Dashboard.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
@@ -43,17 +45,39 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: "home",
+            element: <Home></Home>,
+          },
+          {
+            path: "login",
+            element: <Login></Login>,
+          },
+        ],
+      },
     ],
   },
 ]);
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div className="container mx-auto">
     <React.StrictMode>
       <AuthProvider>
-        <HelmetProvider>
-          <RouterProvider router={router} />
-        </HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <HelmetProvider>
+            <RouterProvider router={router} />
+          </HelmetProvider>
+        </QueryClientProvider>{" "}
       </AuthProvider>
     </React.StrictMode>
   </div>,
