@@ -6,6 +6,7 @@ import { AuthContext } from "./AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { updateCurrentUser } from "firebase/auth";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const handleRegister = async(e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     const name = e.target.name.value;
@@ -28,20 +29,8 @@ const Register = () => {
       photoUrl,
       email,
       password,
-      role: "member"
-    }
-
-
-    const response = await fetch(
-      `${import.meta.env.VITE_SERVER}/users`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      },
-    );
+      role: "member",
+    };
 
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters");
@@ -54,20 +43,29 @@ const Register = () => {
       return;
     }
 
-    createNewUser(email, password, name, photoUrl)
-      .then(() => {
-        updateExistingUserProfile(name, photoUrl);
-        toast.success(
-          "Registration successful. Please Wait For Redirect To The Home Page",
-          { autoClose: 1500 },
-        );
-        setTimeout(() => {
-          navigate(location?.state ? location.state : "/");
-        }, 1500);
-      })
-      .catch((error) => {
-        toast.error(error.message);
+    try {
+      await createNewUser(email, password);
+      await updateExistingUserProfile(name, photoUrl);
+      toast.success(
+        "Registration successful. Please Wait For Redirect To The Home Page",
+        { autoClose: 1500 },
+      );
+      const response = await fetch(`${import.meta.env.VITE_SERVER}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
       });
+      if (!response.ok) {
+        throw new Error("Failed to save user to database");
+      }
+      setTimeout(() => {
+        navigate(location?.state ? location.state : "/");
+      }, 1500);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (

@@ -54,15 +54,6 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleAuthProvider);
   };
 
-  const gitHubAuthProvider = new GithubAuthProvider();
-
-  const gitHubLogin = () => {
-    setLoading(true);
-    return signInWithPopup(auth, gitHubAuthProvider);
-  };
-
-
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -95,7 +86,6 @@ const AuthProvider = ({ children }) => {
     login,
     signOutUser,
     googleLogin,
-    gitHubLogin,
     setUser,
   };
 

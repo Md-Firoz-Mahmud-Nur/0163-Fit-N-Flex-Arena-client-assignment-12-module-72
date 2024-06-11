@@ -1,16 +1,18 @@
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
+import useAxiosPublic from "./Hooks/useAxiosPublic";
 
 const Login = () => {
-  const { login, googleLogin, gitHubLogin } = useContext(AuthContext);
-
+  const { login, googleLogin } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
+
   const HandleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -30,7 +32,20 @@ const Login = () => {
   };
 
   const HandleGoogle = () => {
-    googleLogin().then(() => {
+    googleLogin().then((result) => {
+      console.log(result.user);
+      console.log(result.user.email);
+
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        photoURL: result.user?.photoURL,
+        role: "member",
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+      });
+
       toast.success("Login successful. Please Wait for Redirect", {
         autoClose: 1500,
       });
@@ -40,16 +55,6 @@ const Login = () => {
     });
   };
 
-  const HandleGitHub = () => {
-    gitHubLogin().then(() => {
-      toast.success("Login successful. Please Wait for Redirect", {
-        autoClose: 1500,
-      });
-      setTimeout(() => {
-        navigate(location?.state ? location.state : "/");
-      }, 1500);
-    });
-  };
   return (
     <>
       <Helmet>
@@ -117,12 +122,6 @@ const Login = () => {
               >
                 <FaGoogle />
                 Google
-              </button>
-              <button
-                onClick={HandleGitHub}
-                className="btn btn-outline text-amber-500 hover:border-amber-500 hover:bg-amber-500"
-              >
-                <FaGithub></FaGithub>GitHub
               </button>
             </div>
           </div>
