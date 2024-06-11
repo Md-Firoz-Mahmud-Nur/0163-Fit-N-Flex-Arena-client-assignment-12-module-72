@@ -142,7 +142,7 @@ const Login = () => {
             <div className="mb-4 flex w-full flex-row justify-center">
               <button
                 onClick={HandleGoogle}
-                className="btn btn-outline mr-4 text-amber-500 hover:border-amber-500 hover:bg-amber-500"
+                className="btn btn-outline  text-amber-500 hover:border-amber-500 hover:bg-amber-500"
               >
                 <FaGoogle />
                 Google
