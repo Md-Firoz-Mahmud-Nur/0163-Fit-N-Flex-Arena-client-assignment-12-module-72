@@ -6,7 +6,6 @@ import { AuthContext } from "./AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { updateCurrentUser } from "firebase/auth";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);

@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
-  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
