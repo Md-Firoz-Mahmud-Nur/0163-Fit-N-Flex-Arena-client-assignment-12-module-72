@@ -18,7 +18,19 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     login(email, password)
-      .then(() => {
+      .then((result) => {
+        const userLastLoinTime = {
+          lastSignInTime: result.user?.metadata?.lastSignInTime,
+          lastLoginAt: result.user?.metadata?.lastLoginAt,
+        };
+
+        axiosPublic
+          .put(`/users/${result.user?.email}`, userLastLoinTime)
+          .then((res) => {
+            console.log("Try to update last login time");
+            console.log(res.data);
+          });
+
         toast.success("Login successful. Please Wait for Redirect", {
           autoClose: 1500,
         });
