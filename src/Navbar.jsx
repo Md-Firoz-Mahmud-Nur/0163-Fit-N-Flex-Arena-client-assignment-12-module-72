@@ -30,15 +30,23 @@ const Navbar = () => {
       <li>
         <NavLink to="/allClasses">All Classes</NavLink>
       </li>
-      <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
+      {!user ? (
+        <></>
+      ) : (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to="/forum">Forum</NavLink>
       </li>
-      <li>
-        <NavLink to="/Profile">Profile</NavLink>
-      </li>
+      {user ? (
+        <li>
+          <NavLink to="/userProfile">User Profile</NavLink>
+        </li>
+      ) : (
+        <></>
+      )}
     </>
   );
   return (
