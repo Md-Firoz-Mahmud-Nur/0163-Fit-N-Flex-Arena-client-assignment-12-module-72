@@ -51,7 +51,6 @@ const BecomeATrainer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const fullName = form.fullName.value;
     const email = form.email.value;
     const age = form.age.value;
     const selectedSkillsValues = selectedSkills.map((skill) => skill.value);
@@ -59,8 +58,8 @@ const BecomeATrainer = () => {
     const selectedTimeValues = selectedTimes.map((time) => time.value);
 
     try {
-      const response = await fetch("http://localhost:3000/users", {
-        method: "POST",
+      const response = await fetch(`http://localhost:3000/users/${email}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -69,8 +68,6 @@ const BecomeATrainer = () => {
           availableDays: selectedDayValues,
           availableTimes: selectedTimeValues,
           status: "pending",
-          fullName,
-          email,
           age,
         }),
       });
