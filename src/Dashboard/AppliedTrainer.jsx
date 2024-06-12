@@ -42,6 +42,7 @@ const AppliedTrainer = () => {
             </th>
             <th className="border border-gray-300 px-4 py-2">Skills</th>
             <th className="border border-gray-300 px-4 py-2">Status</th>
+            <th className="border border-gray-300 px-4 py-2">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -63,10 +64,33 @@ const AppliedTrainer = () => {
               <td className="border border-gray-300 px-4 py-2">
                 {user.status}
               </td>
+              <td className="flex border border-gray-300 px-4 py-2">
+                <button
+                  className="btn"
+                  onClick={() =>
+                    document.getElementById("my_modal_5").showModal()
+                  }
+                >
+                  Action
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="text-lg font-bold">Hello!</h3>
+          <p className="py-4">
+            Press ESC key or click the button below to close
+          </p>
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };
