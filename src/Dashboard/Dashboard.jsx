@@ -13,6 +13,8 @@ const Dashboard = () => {
         <NavLink to="login">Login</NavLink>
         <br />
         <NavLink to="allUsers">All Users</NavLink>
+        <br />
+        <NavLink to="appliedTrainer">Applied Trainer</NavLink>
       </div>
       <div className="flex-1">
         <Outlet></Outlet>

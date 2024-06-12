@@ -16,6 +16,7 @@ import Dashboard from "./Dashboard/Dashboard.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AllUsers from "./Dashboard/AllUsers.jsx";
 import UserProfile from "./UserProfile/UserProfile.jsx";
+import AppliedTrainer from "./Dashboard/AppliedTrainer.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
           {
             path: "allUsers",
             element: <AllUsers></AllUsers>,
+          },
+          {
+            path: "appliedTrainer",
+            element: <AppliedTrainer></AppliedTrainer>,
           },
         ],
       },
