@@ -1,10 +1,15 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider";
 import Select from "react-select";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const BecomeATrainer = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  const navigate = useNavigate();
+  console.log(location);
+  console.log(location.state);
+
 
   const skills = [
     { value: "JavaScript", label: "JavaScript" },
@@ -73,6 +78,15 @@ const BecomeATrainer = () => {
       });
       if (response.ok) {
         console.log("Skills submitted successfully");
+        toast.success("Submission successful. Please wait for redirect...", {
+          autoClose: 1500,
+        });
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/");
+          console.log(navigate);
+          console.log(location);
+          console.log(location.state);
+        }, 1500);
       } else {
         console.error("Failed to submit skills");
       }
@@ -216,6 +230,7 @@ const BecomeATrainer = () => {
           Add
         </button>
       </div>
+      <ToastContainer></ToastContainer>
     </form>
   );
 };
