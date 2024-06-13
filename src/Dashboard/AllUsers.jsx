@@ -87,6 +87,7 @@ const AllUsers = () => {
                       className="btn btn-lg bg-orange-500"
                     >
                       <FaUsers className="text-2xl text-white"></FaUsers>
+                      {user.role}
                     </button>
                   )}
                 </td>
