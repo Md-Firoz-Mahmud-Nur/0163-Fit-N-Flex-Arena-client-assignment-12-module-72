@@ -7,6 +7,8 @@ const AppliedTrainer = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [feedback, setFeedback] = useState("");
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   useEffect(() => {
     const fetchPendingUsers = async () => {
@@ -32,11 +34,17 @@ const AppliedTrainer = () => {
     // Implement the reject logic here
     console.log("Rejected", selectedUser);
     document.getElementById("my_modal_5").close();
+    document.getElementById("my_modal_5_reject").showModal();
+  };
+
+  const handleFeedbackChange = (e) => {
+    setFeedback(e.target.value);
+    setIsSubmitDisabled(e.target.value.trim() === "");
   };
 
   const handleConfirm = async () => {
     try {
-      await axiosSecure.put(`/users/${selectedUser._id}/status`, {
+      await axiosSecure.put(`/users/${selectedUser._id}/statusResolved`, {
         status: "resolved",
         role: "trainer",
       });
@@ -51,6 +59,21 @@ const AppliedTrainer = () => {
       document.getElementById("my_modal_5").close();
     }
   };
+
+  const handleSubmit = async () => {
+    try {
+      await axiosSecure.put(`/users/${selectedUser._id}/statusReject`, {
+        status: "rejected",
+        feedback: feedback,
+      });
+      const response = await axiosSecure.get("/usersPending");
+      setPendingUsers(response.data);
+      document.getElementById("reject_modal").close();
+    } catch (error) {
+      console.error("Error updating user status:", error);
+    }
+  };
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -127,6 +150,47 @@ const AppliedTrainer = () => {
           </div>
         </dialog>
       )}
+      <dialog
+        id="my_modal_5_reject"
+        className="modal modal-bottom sm:modal-middle"
+      >
+        {selectedUser && (
+          <div className="modal-box">
+            <h3 className="text-lg font-bold">User Details</h3>
+            <p>Name: {selectedUser.name}</p>
+            <p>Email: {selectedUser.email}</p>
+            <p>Role: {selectedUser.role}</p>
+            <p>Age: {selectedUser.age}</p>
+            <p>Available Days: {selectedUser.availableDays.join(", ")}</p>
+            <p>Available Times: {selectedUser.availableTimes.join(", ")}</p>
+            <p>Skills: {selectedUser.skills.join(", ")}</p>
+            <p>Status: {selectedUser.status}</p>
+            <textarea
+              className="textarea textarea-bordered mt-4 w-full"
+              placeholder="Enter feedback"
+              value={feedback}
+              onChange={handleFeedbackChange}
+            />
+            <div className="modal-action">
+              <button
+                className="btn"
+                onClick={() =>
+                  document.getElementById("my_modal_5_reject").close()
+                }
+              >
+                Cancel
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={handleSubmit}
+                disabled={isSubmitDisabled}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        )}
+      </dialog>
     </div>
   );
 };
