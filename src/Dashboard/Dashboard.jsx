@@ -15,6 +15,8 @@ const Dashboard = () => {
         <NavLink to="allUsers">All Users</NavLink>
         <br />
         <NavLink to="appliedTrainer">Applied Trainer</NavLink>
+        <br />
+        <NavLink to="allTrainers">AllTrainers</NavLink>
       </div>
       <div className="flex-1">
         <Outlet></Outlet>
