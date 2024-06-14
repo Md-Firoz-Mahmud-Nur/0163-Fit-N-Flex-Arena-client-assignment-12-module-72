@@ -49,7 +49,7 @@ const features = [
 
 const FeaturedSection = () => {
   return (
-    <section className="my-10 rounded-3xl border border-amber-500 object-cover py-12 shadow-xl shadow-amber-200">
+    <section className="my-20 rounded-3xl border border-amber-500 object-cover py-12 shadow-xl shadow-amber-200">
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">
           Our Key Features

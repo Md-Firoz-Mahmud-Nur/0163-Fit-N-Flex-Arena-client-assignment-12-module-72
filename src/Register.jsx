@@ -146,7 +146,7 @@ const Register = () => {
                 </div>
                 <label className="label">
                   <p className="mt-4">
-                    Already have an account? Please{" "}
+                    Already have an account? Please
                     <Link
                       className="btn-link font-semibold text-amber-500"
                       to="/login"

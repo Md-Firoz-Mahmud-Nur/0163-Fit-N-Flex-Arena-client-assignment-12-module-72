@@ -120,7 +120,7 @@ const Login = () => {
                 />
                 <label className="label">
                   <p className="mt-4">
-                    New to this website? Please{" "}
+                    New to this website? Please
                     <Link
                       className="btn-link font-semibold text-amber-500"
                       to="/register"

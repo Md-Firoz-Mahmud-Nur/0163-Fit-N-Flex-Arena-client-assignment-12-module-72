@@ -97,7 +97,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <HelmetProvider>
             <RouterProvider router={router} />
           </HelmetProvider>
-        </QueryClientProvider>{" "}
+        </QueryClientProvider>
       </AuthProvider>
     </React.StrictMode>
   </div>,
