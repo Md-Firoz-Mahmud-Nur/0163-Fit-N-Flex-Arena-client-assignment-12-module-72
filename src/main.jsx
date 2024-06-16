@@ -18,6 +18,7 @@ import AllUsers from "./Dashboard/AllUsers.jsx";
 import UserProfile from "./UserProfile/UserProfile.jsx";
 import AppliedTrainer from "./Dashboard/AppliedTrainer.jsx";
 import AllTrainers from "./Dashboard/AllTrainers.jsx";
+import AddNewClass from "./Dashboard/AddNewClass.jsx";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
           {
             path: "allTrainers",
             element: <AllTrainers></AllTrainers>,
+          },
+          {
+            path: "addNewClass",
+            element: <AddNewClass></AddNewClass>,
           },
         ],
       },

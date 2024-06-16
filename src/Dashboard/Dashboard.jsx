@@ -17,6 +17,8 @@ const Dashboard = () => {
         <NavLink to="appliedTrainer">Applied Trainer</NavLink>
         <br />
         <NavLink to="allTrainers">AllTrainers</NavLink>
+        <br />
+        <NavLink to="addNewClass">Add New Class</NavLink>
       </div>
       <div className="flex-1">
         <Outlet></Outlet>
