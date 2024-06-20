@@ -3,24 +3,15 @@ import { AuthContext } from "../AuthProvider";
 import Select from "react-select";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import useClassName from "../Hooks/useClassName";
+import { useMutation } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const BecomeATrainer = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(location);
-  console.log(location.state);
-
-
-  const skills = [
-    { value: "JavaScript", label: "JavaScript" },
-    { value: "React", label: "React" },
-    { value: "Node.js", label: "Node.js" },
-    { value: "CSS", label: "CSS" },
-    { value: "HTML", label: "HTML" },
-    { value: "Python", label: "Python" },
-    { value: "Java", label: "Java" },
-    { value: "C++", label: "C++" },
-  ];
+  const axiosSecure = useAxiosSecure(); // Get the axios instance
+  const { classes } = useClassName();
 
   const daysOfWeek = [
     { value: "Sat", label: "Saturday" },
@@ -58,6 +49,9 @@ const BecomeATrainer = () => {
     const form = e.target;
     const email = form.email.value;
     const age = form.age.value;
+    const classDuration = form.classDuration.value;
+    const biography = form.biography.value;
+    const experience = form.experience.value;
     const selectedSkillsValues = selectedSkills.map((skill) => skill.value);
     const selectedDayValues = selectedDays.map((day) => day.value);
     const selectedTimeValues = selectedTimes.map((time) => time.value);
@@ -74,8 +68,12 @@ const BecomeATrainer = () => {
           availableTimes: selectedTimeValues,
           status: "pending",
           age,
+          classDuration,
+          biography,
+          experience,
         }),
       });
+
       if (response.ok) {
         console.log("Skills submitted successfully");
         toast.success("Submission successful. Please wait for redirect...", {
@@ -83,13 +81,11 @@ const BecomeATrainer = () => {
         });
         setTimeout(() => {
           navigate(location?.state ? location.state : "/");
-          console.log(navigate);
-          console.log(location);
-          console.log(location.state);
         }, 1500);
       } else {
         console.error("Failed to submit skills");
       }
+      form.reset();
     } catch (error) {
       console.error("Error submitting skills:", error);
     }
@@ -161,21 +157,21 @@ const BecomeATrainer = () => {
             />
           </label>
         </div>
+
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
-            <span className="label-text">Available Days</span>
+            <span className="label-text">Experience</span>
           </label>
-          <div className="input-group">
-            <Select
-              isMulti
-              options={daysOfWeek}
-              className="w-full"
-              classNamePrefix="select"
-              placeholder="Select Available Days"
-              onChange={handleDaysChange}
+          <label className="input-group">
+            <input
+              type="number"
+              min={0}
+              className="input input-bordered w-full"
+              name="experience"
+              placeholder="Experience In ( Year )"
               required
             />
-          </div>
+          </label>
         </div>
 
         <div className="form-control col-span-2 w-full md:col-span-1">
@@ -193,6 +189,23 @@ const BecomeATrainer = () => {
               required
             />
           </label>
+        </div>
+
+        <div className="form-control col-span-2 w-full md:col-span-1">
+          <label className="label">
+            <span className="label-text">Available Days</span>
+          </label>
+          <div className="input-group">
+            <Select
+              isMulti
+              options={daysOfWeek}
+              className="w-full"
+              classNamePrefix="select"
+              placeholder="Select Available Days"
+              onChange={handleDaysChange}
+              required
+            />
+          </div>
         </div>
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
@@ -217,7 +230,10 @@ const BecomeATrainer = () => {
           <div className="input-group">
             <Select
               isMulti
-              options={skills}
+              options={classes.map((skill) => ({
+                value: skill.name,
+                label: skill.name,
+              }))}
               className="w-full"
               classNamePrefix="select"
               placeholder="Select Your Skills"
@@ -225,6 +241,36 @@ const BecomeATrainer = () => {
               required
             />
           </div>
+        </div>
+        <div className="form-control col-span-2 w-full md:col-span-1">
+          <label className="label">
+            <span className="label-text">Class Duration</span>
+          </label>
+          <label className="input-group">
+            <input
+              type="number"
+              min={0}
+              className="input input-bordered w-full"
+              name="classDuration"
+              placeholder="Input Class Duration In Minutes"
+              required
+            />
+          </label>
+        </div>
+        <div className="form-control col-span-2 w-full md:col-span-2">
+          <label className="label">
+            <span className="label-text">Biography</span>
+          </label>
+          <label className="input-group">
+            <textarea
+              type="text"
+              min={0}
+              className="input input-bordered w-full"
+              name="biography"
+              placeholder="Your biography"
+              required
+            />
+          </label>
         </div>
         <button className="btn btn-outline col-span-2 border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white">
           Add

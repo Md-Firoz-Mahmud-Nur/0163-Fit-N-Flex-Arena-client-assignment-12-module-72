@@ -19,6 +19,8 @@ import UserProfile from "./UserProfile/UserProfile.jsx";
 import AppliedTrainer from "./Dashboard/AppliedTrainer.jsx";
 import AllTrainers from "./Dashboard/AllTrainers.jsx";
 import AddNewClass from "./Dashboard/AddNewClass.jsx";
+import AllClasses from "./AllClasses/AllClasses.jsx";
+import AppliedTrainerDetails from "./Dashboard/AppliedTrainerDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/allTrainer",
         element: <AllTrainer></AllTrainer>,
+      },
+      {
+        path: "/allClasses",
+        element: <AllClasses></AllClasses>,
       },
       {
         path: "/userProfile",
@@ -77,6 +83,14 @@ const router = createBrowserRouter([
           {
             path: "appliedTrainer",
             element: <AppliedTrainer></AppliedTrainer>,
+          },
+          {
+            path: "appliedTrainer/appliedTrainerDetails/:id",
+            loader: ({ params }) =>
+              fetch(
+                `${import.meta.env.VITE_SERVER}/appliedTrainerDetail/${params.id}`,
+              ),
+            element: <AppliedTrainerDetails></AppliedTrainerDetails>,
           },
           {
             path: "allTrainers",
