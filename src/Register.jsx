@@ -1,35 +1,28 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState} from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
 import { AuthContext } from "./AuthProvider";
 import { Helmet } from "react-helmet-async";
+import { uploadImage } from "./Hooks/imageUpload";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useAxiosPublic from "./Hooks/useAxiosPublic";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
-
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
-
     const name = e.target.name.value;
-    const photoUrl = e.target.url.value;
+    const photo = e.target.photo.files[0];
     const email = e.target.email.value;
     const password = e.target.password.value;
-
-    const newUser = {
-      name,
-      photoUrl,
-      email,
-      password,
-      role: "member",
-    };
 
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters");
@@ -43,12 +36,21 @@ const Register = () => {
     }
 
     try {
-      await createNewUser(email, password);
-      await updateExistingUserProfile(name, photoUrl);
-      toast.success(
-        "Registration successful. Please Wait For Redirect To The Home Page",
-        { autoClose: 1500 },
-      );
+      const photoUrl = photo ? await uploadImage(photo) : "";
+      const newUser = {
+        name,
+        photoUrl,
+        email,
+        password,
+        role: "member",
+      };
+
+      const result = await createNewUser(email, password);
+      const userLastLoginTime = {
+        lastSignInTime: result.user?.metadata?.lastSignInTime,
+        lastLoginAt: result.user?.metadata?.lastLoginAt,
+      };
+
       const response = await fetch(`${import.meta.env.VITE_SERVER}/users`, {
         method: "POST",
         headers: {
@@ -56,9 +58,18 @@ const Register = () => {
         },
         body: JSON.stringify(newUser),
       });
+
       if (!response.ok) {
         throw new Error("Failed to save user to database");
       }
+
+      await updateExistingUserProfile(name, photoUrl);
+      await axiosPublic.put(`/users/${result.user?.email}`, userLastLoginTime);
+
+      toast.success("Registration successful. Redirecting to home page...", {
+        autoClose: 1500,
+      });
+
       setTimeout(() => {
         navigate(location?.state ? location.state : "/");
       }, 1500);
@@ -98,16 +109,14 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text">Photo URL</span>
+                  <span className="label-text">Photo</span>
                 </label>
                 <input
-                  type="text"
-                  name="url"
-                  placeholder="Provide Link"
-                  className="input input-bordered"
-                  required
+                  name="photo"
+                  type="file"
+                  className="file-input file-input-bordered w-full"
                 />
               </div>
               <div className="form-control">
@@ -128,7 +137,7 @@ const Register = () => {
                 </label>
                 <div className="relative">
                   <input
-                    type={showPassword ? "Text" : "password"}
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     placeholder="Password"
                     className="input input-bordered w-full"
@@ -157,15 +166,25 @@ const Register = () => {
                 </label>
               </div>
               <div className="form-control my-6">
-                <button className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white">
-                  Register
+                <button
+                  className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <span className="flex items-center">
+                      <span className="loading loading-spinner loading-sm mr-2"></span>
+                      Loading...
+                    </span>
+                  ) : (
+                    "Register"
+                  )}
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <ToastContainer></ToastContainer>
+      <ToastContainer />
     </>
   );
 };

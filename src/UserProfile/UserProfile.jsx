@@ -5,7 +5,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -36,15 +36,30 @@ const UserProfile = () => {
   if (!userData) return <div>No user data found</div>;
 
   return (
-    <div>
-      <h1>User Profile</h1>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.email}</p>
-      <p>Role: {userData.role}</p>
-      {/* <p>Last Login: {Date(userData.lastLoginAt).toLocaleString()}</p> */}
-      <p>Last Login: {Date(userData.lastSignInTime).toLocaleString()}</p>
-      <img src={userData.photoURL} alt={`${userData.name}'s profile`} />
-    </div>
+    <section className="my-20 rounded-3xl py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">
+          User Profile
+        </h2>
+        <div className="mx-auto max-w-md rounded-lg border border-amber-500 p-6 shadow-xl">
+          <div className="flex flex-col items-center">
+            <img
+              src={userData.photoUrl}
+              alt={`${userData.name}'s profile`}
+              className="mb-4 h-32 w-32 rounded-full object-cover shadow-md"
+            />
+            <h3 className="mb-2 text-2xl font-bold text-gray-900">
+              {userData.name}
+            </h3>
+            <p className="mb-4 text-gray-700">{userData.email}</p>
+            <p className="mb-4 text-gray-700">{userData.role}</p>
+            <p className="text-gray-500">
+              Last Login: {new Date(userData.lastSignInTime).toLocaleString()}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

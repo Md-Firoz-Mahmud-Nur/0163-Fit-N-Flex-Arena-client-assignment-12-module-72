@@ -58,7 +58,7 @@ const FeaturedSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="card flex h-full w-full rounded-lg border-b  border-b-amber-500 p-6 text-center shadow-xl shadow-amber-100"
+              className="card flex h-full w-full rounded-lg border border-b border-amber-500 border-b-amber-500 p-6 text-center shadow-xl shadow-amber-100 transition-shadow duration-300 hover:shadow-amber-300"
             >
               <div className="mb-4 text-4xl text-amber-500">
                 <FontAwesomeIcon icon={feature.icon} />

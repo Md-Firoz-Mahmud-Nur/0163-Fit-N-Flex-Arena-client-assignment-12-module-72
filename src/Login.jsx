@@ -26,10 +26,7 @@ const Login = () => {
 
         axiosPublic
           .put(`/users/${result.user?.email}`, userLastLoinTime)
-          .then((res) => {
-            console.log("Try to update last login time");
-            console.log(res.data);
-          });
+          .then((res) => {});
 
         toast.success("Login successful. Please Wait for Redirect", {
           autoClose: 1500,
@@ -45,18 +42,13 @@ const Login = () => {
 
   const HandleGoogle = () => {
     googleLogin().then((result) => {
-      console.log(result.user);
-      console.log(result.user.email);
-
       const userInfo = {
         name: result.user?.displayName,
         email: result.user?.email,
         photoURL: result.user?.photoURL,
         role: "member",
       };
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-      });
+      axiosPublic.post("/users", userInfo).then((res) => {});
 
       const userLastLoinTime = {
         lastSignInTime: result.user?.metadata?.lastSignInTime,
@@ -65,10 +57,7 @@ const Login = () => {
 
       axiosPublic
         .put(`/users/${result.user?.email}`, userLastLoinTime)
-        .then((res) => {
-          console.log("Try to update last login time");
-          console.log(res.data);
-        });
+        .then(() => {});
 
       toast.success("Login successful. Please Wait for Redirect", {
         autoClose: 1500,
@@ -142,7 +131,7 @@ const Login = () => {
             <div className="mb-4 flex w-full flex-row justify-center">
               <button
                 onClick={HandleGoogle}
-                className="btn btn-outline  text-amber-500 hover:border-amber-500 hover:bg-amber-500"
+                className="btn btn-outline text-amber-500 hover:border-amber-500 hover:bg-amber-500"
               >
                 <FaGoogle />
                 Google

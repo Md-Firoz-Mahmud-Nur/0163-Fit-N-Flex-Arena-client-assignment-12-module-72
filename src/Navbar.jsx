@@ -4,7 +4,6 @@ import { AuthContext } from "./AuthProvider";
 
 const Navbar = () => {
   const { user, signOutUser, setUser } = useContext(AuthContext);
-  console.log(user);
   const signOut = () => {
     signOutUser()
       .then(() => {
@@ -103,7 +102,7 @@ const Navbar = () => {
               }
             >
               <div className="mr-2 size-10 rounded-full border-2 border-amber-500">
-                <img className="rounded-full" alt="" src={user.photoURL} />
+                <img className="rounded-full object-cover h-full w-full" alt="" src={user.photoURL} />
               </div>
             </div>
             <Link

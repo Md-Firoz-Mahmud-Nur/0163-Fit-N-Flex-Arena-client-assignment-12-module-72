@@ -2,15 +2,13 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider";
 import Select from "react-select";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import CSS for react-toastify
 import { useNavigate } from "react-router-dom";
 import useClassName from "../Hooks/useClassName";
-import { useMutation } from "@tanstack/react-query";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const BecomeATrainer = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure(); // Get the axios instance
   const { classes } = useClassName();
 
   const daysOfWeek = [
@@ -57,7 +55,36 @@ const BecomeATrainer = () => {
     const selectedTimeValues = selectedTimes.map((time) => time.value);
 
     try {
-      const response = await fetch(`http://localhost:3000/users/${email}`, {
+      // Fetch user data to check status
+      const userResponse = await fetch(`${import.meta.env.VITE_SERVER}/users/${email}`);
+      const userData = await userResponse.json();
+
+      // Check if user has a pending application
+      if (userData.status === "pending") {
+        toast.error("You have a pending application.", {
+          autoClose: 1500,
+        });
+
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/dashboard/activityLog");
+        }, 1500);
+
+        return;
+      }
+      if (userData.status === "resolved") {
+        toast.error("You are already a trainer", {
+          autoClose: 1500,
+        });
+
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/dashboard/manageSlots");
+        }, 1500);
+
+        return;
+      }
+
+      // Proceed with the PUT request to update user details
+      const response = await fetch(`${import.meta.env.VITE_SERVER}/users/${email}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -75,12 +102,11 @@ const BecomeATrainer = () => {
       });
 
       if (response.ok) {
-        console.log("Skills submitted successfully");
         toast.success("Submission successful. Please wait for redirect...", {
           autoClose: 1500,
         });
         setTimeout(() => {
-          navigate(location?.state ? location.state : "/");
+          navigate(location?.state ? location.state : "/dashboard/activityLog");
         }, 1500);
       } else {
         console.error("Failed to submit skills");
@@ -94,6 +120,7 @@ const BecomeATrainer = () => {
   return (
     <form onSubmit={handleSubmit} className="mt-10">
       <div className="grid grid-cols-2 gap-4">
+        {/*  */}
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
             <span className="label-text">Full Name</span>
@@ -252,7 +279,7 @@ const BecomeATrainer = () => {
               min={0}
               className="input input-bordered w-full"
               name="classDuration"
-              placeholder="Input Class Duration In Minutes"
+              placeholder="Input Class Duration In Hour"
               required
             />
           </label>

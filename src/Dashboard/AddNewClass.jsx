@@ -5,12 +5,13 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../Hooks/useAuth";
 import { uploadImage } from "../Hooks/imageUpload";
+import { useState } from "react";
 
 const AddNewClass = () => {
   const { user } = useAuth();
+  const [isCURDLoading, setIsCRUDLoading] = useState(false);
   const axiosSecure = useAxiosSecure();
-
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isLoading } = useMutation({
     mutationFn: async (newClass) => {
       const { data } = await axiosSecure.post(
         `/addNewClass?email=${user?.email}`,
@@ -32,6 +33,7 @@ const AddNewClass = () => {
   });
 
   const handleAddNewClass = async (e) => {
+    setIsCRUDLoading(true);
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -48,60 +50,73 @@ const AddNewClass = () => {
       };
       await mutateAsync(newClass);
       form.reset();
+      setIsCRUDLoading(false);
     } catch (error) {
       toast.error(error.message);
     }
   };
 
   return (
-    <div className="m-2 flex min-h-[80vh] w-full items-center justify-center rounded-3xl border border-amber-500 shadow-xl shadow-amber-500">
-      <form
-        onSubmit={handleAddNewClass}
-        className="flex w-full flex-col gap-4 rounded-3xl border border-amber-500 bg-base-100 p-6 shadow-xl shadow-amber-500 md:p-8 lg:w-10/12 lg:gap-6 lg:p-10 xl:w-1/2"
-      >
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Class Name</span>
-          </label>
-          <input
-            name="name"
-            type="text"
-            className="input input-bordered"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Class Image</span>
-          </label>
-          <input
-            name="photo"
-            type="file"
-            accept="image/*"
-            className="file-input file-input-bordered"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Class Description</span>
-          </label>
-          <textarea
-            name="details"
-            className="textarea textarea-bordered"
-            required
-          />
-        </div>
-        <div className="form-control mt-6">
-          <button
-            type="submit"
-            className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 shadow-xl shadow-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
-          >
-            Add Class
-          </button>
-        </div>
-      </form>
-      <ToastContainer />
+    <div className="flex min-h-[80vh] w-full items-center justify-center p-4 lg:p-8">
+      <div className="w-full max-w-3xl rounded-3xl border border-amber-500 bg-white shadow-xl shadow-amber-500">
+        <form onSubmit={handleAddNewClass} className="space-y-6 p-6 lg:p-8">
+          <h2 className="text-center text-2xl font-semibold text-amber-500">
+            Add a New Class
+          </h2>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Class Name</span>
+            </label>
+            <input
+              name="name"
+              type="text"
+              className="input input-bordered"
+              placeholder="Enter class name"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Class Image</span>
+            </label>
+            <input
+              name="photo"
+              type="file"
+              accept="image/*"
+              className="file-input file-input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Class Description</span>
+            </label>
+            <textarea
+              name="details"
+              className="textarea textarea-bordered"
+              placeholder="Enter class description"
+              required
+            />
+          </div>
+          <div className="form-control mt-6">
+            <button
+              type="submit"
+              className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 shadow-lg shadow-amber-300 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
+              disabled={isLoading}
+            >
+              {isCURDLoading ? (
+                <span className="flex items-center">
+                  <span className="loading loading-spinner loading-sm mr-2"></span>
+                  Adding...
+                </span>
+              ) : (
+                "Add Class"
+              )}
+            </button>
+          </div>
+        </form>
+        <ToastContainer />
+      </div>
     </div>
   );
 };
