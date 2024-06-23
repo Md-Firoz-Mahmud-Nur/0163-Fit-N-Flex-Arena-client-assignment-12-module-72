@@ -1,38 +1,36 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../AuthProvider";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const [userData, setUserData] = useState();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
+  const {
+    data: userData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["userProfile", user?.email],
+    queryFn: async () => {
+      if (user?.email) {
         const response = await axiosSecure.get(`/users/${user.email}`);
-        setUserData(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
+        return response.data;
       }
-    };
+      return null;
+    },
+    enabled: !!user?.email,
+  });
 
-    if (user?.email) {
-      fetchUserData();
-    }
-  }, [user, axiosSecure]);
-
-  if (loading)
+  if (isLoading)
     return (
       <div className="flex justify-center">
         <span className="loading loading-dots loading-lg"></span>
       </div>
     );
+
   if (error) return <div>Error: {error.message}</div>;
   if (!userData) return <div>No user data found</div>;
 
