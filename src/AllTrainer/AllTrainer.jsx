@@ -27,6 +27,16 @@ const AllTrainer = () => {
       </div>
     );
 
+  if (trainers.length === 0) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <p className="text-2xl font-semibold text-red-600">
+          No Trainers Available
+        </p>
+      </div>
+    );
+  }
+
   return (
     <section className="my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">
       <div className="min-h-[60vh] px-4">
@@ -40,13 +50,13 @@ const AllTrainer = () => {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {trainers.map((trainer) => (
               <div key={trainer._id}>
-                <div className="card rounded-lg border border-amber-500 shadow-xl transition-shadow duration-300 hover:shadow-amber-300">
+                <div className="card rounded-lg border border-amber-500 shadow-xl transition-shadow duration-300 hover:shadow-amber-300 h-full">
                   <img
                     src={trainer?.photoUrl}
                     alt={trainer?.name}
                     className="h-56 w-full rounded-t-lg object-cover object-center"
                   />
-                  <div className="p-6">
+                  <div className="p-6 h-full flex flex-col">
                     <h3 className="mb-2 text-xl font-semibold text-gray-900">
                       {trainer?.name}
                     </h3>
@@ -57,12 +67,13 @@ const AllTrainer = () => {
                       {trainer.skills.map((skill, i) => (
                         <span
                           key={i}
-                          className="rounded-full border bg-amber-500 px-3 py-1 text-xs font-semibold text-white"
+                          className="rounded-full border bg-amber-500 px-3 py-1  font-semibold text-white"
                         >
                           {skill}
                         </span>
                       ))}
                     </div>
+                    <div className="flex-grow"></div>
                     <div className="flex items-center justify-between">
                       <Link
                         to={`/trainerDetails/${trainer._id}`}

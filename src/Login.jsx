@@ -3,17 +3,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import useAxiosPublic from "./Hooks/useAxiosPublic";
 
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
+  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const HandleLogin = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -26,12 +28,13 @@ const Login = () => {
 
         axiosPublic
           .put(`/users/${result.user?.email}`, userLastLoinTime)
-          .then((res) => {});
+          .then(() => {});
 
         toast.success("Login successful. Please Wait for Redirect", {
           autoClose: 1500,
         });
         setTimeout(() => {
+          setIsLoading(false);
           navigate(location?.state ? location.state : "/");
         }, 1500);
       })
@@ -120,8 +123,18 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white">
-                  Login
+                <button
+                  className="btn btn-outline border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <span className="flex items-center">
+                      <span className="loading loading-spinner loading-sm mr-2"></span>
+                      Loading...
+                    </span>
+                  ) : (
+                    "Login"
+                  )}
                 </button>
               </div>
             </form>
