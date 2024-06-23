@@ -50,7 +50,7 @@ const FeaturedClasses = () => {
                       {item.totalBooking} Bookings
                     </span>
                     <h3 className="mb-2 mt-3 text-xl font-medium text-amber-500">
-                      "{item.name}"
+                      {item.name}
                     </h3>
                     <p className="text-gray-700">
                       {item.description.slice(0, 80)}...

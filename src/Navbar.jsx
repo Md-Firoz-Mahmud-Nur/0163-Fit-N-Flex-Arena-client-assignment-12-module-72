@@ -115,7 +115,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="container navbar mx-auto mb-10 mt-6 bg-base-100 sticky top-0 z-50 shadow-xl border-b border-amber-500 shadow-amber-100">
+    <div className="container navbar mx-auto mb-10 mt-6  sticky top-0 z-50 shadow-xl border-b border-amber-500 bg-amber-50  shadow-amber-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -156,7 +156,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:ml-20 lg:flex">
-        <ul className="menu menu-horizontal bg-amber-50 px-1">{links}</ul>
+        <ul className="menu menu-horizontal bg-amber-100 shadow-md rounded-2xl shadow-amber-100 px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
         {user ? (

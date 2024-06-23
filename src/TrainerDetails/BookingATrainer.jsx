@@ -19,6 +19,7 @@ const BookingATrainer = () => {
 
   const trainer = useLoaderData();
   const { state } = useLocation();
+  console.log(state.sName);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -33,10 +34,10 @@ const BookingATrainer = () => {
 
     const bookingData = {
       class: {
-        className: className,
+        cName: className,
         day: state.day,
-        slotTime: state.slotTime,
-        slotName: state.slotName,
+        sTime: state.sTime,
+        sName: state.sName,
         sId: state.slotId,
       },
       package: plan,
@@ -310,11 +311,11 @@ const BookingATrainer = () => {
                 </p>
                 <p>
                   <span className="text-lg font-medium">Slot Name :</span>{" "}
-                  <span className="opacity-80">{state.slotName}</span>
+                  <span className="opacity-80">{state.sName}</span>
                 </p>
                 <p>
                   <span className="text-lg font-medium">Slot Time :</span>{" "}
-                  <span className="opacity-80">{state.slotTime} hr</span>
+                  <span className="opacity-80">{state.sTime} hr</span>
                 </p>
                 <p>
                   <span className="text-lg font-medium">Package :</span>{" "}

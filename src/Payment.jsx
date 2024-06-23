@@ -8,6 +8,7 @@ import CheckoutForm from "./CheckoutForm";
 const Payment = () => {
   const { state } = useLocation();
   const bookingData = state?.bookingData;
+  console.log(bookingData);
   const [isOpen, setIsOpen] = useState(false);
 
   const stripePromise = loadStripe(
@@ -57,7 +58,7 @@ const Payment = () => {
             </p>
             <p>
               <span className="text-lg font-medium">Class Name :</span>{" "}
-              <span className="opacity-80">{bookingData.class.className.label}</span>
+              <span className="opacity-80">{bookingData.class.className}</span>
             </p>
             <p>
               <span className="text-lg font-medium">Day :</span>{" "}
@@ -65,11 +66,11 @@ const Payment = () => {
             </p>
             <p>
               <span className="text-lg font-medium">Slot :</span>{" "}
-              <span className="opacity-80">{bookingData.class.slotName}</span>
+              <span className="opacity-80">{bookingData.class.sName}</span>
             </p>
             <p>
               <span className="text-lg font-medium">Slot Time :</span>{" "}
-              <span className="opacity-80">{bookingData.class.slotTime} hr</span>
+              <span className="opacity-80">{bookingData.class.sTime} hr</span>
             </p>
 
             <div className="bg-blue-gray-600 h-[1px] w-full"></div>

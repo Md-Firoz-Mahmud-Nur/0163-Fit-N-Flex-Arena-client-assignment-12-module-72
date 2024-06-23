@@ -57,7 +57,7 @@ const CheckoutForm = ({ bookingData, closeModal }) => {
 
     if (error) {
       setProcessing(false);
-      return Toast.error(error);
+      return toast.error(error);
     }
 
     const { error: confirmationError, paymentIntent } =

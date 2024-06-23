@@ -31,8 +31,8 @@ const TrainerDetails = () => {
         <title>Trainer Details | Fit N Flex Arena</title>
       </Helmet>
       <div className="container mx-auto py-16">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-lg border border-amber-500 bg-white shadow-xl shadow-amber-200 lg:flex   ">
-          <div className="lg:relative lg:w-1/2 ">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-lg border border-amber-500 bg-white shadow-xl shadow-amber-200 lg:flex">
+          <div className="lg:relative lg:w-1/2">
             <img
               className="h-64 w-full object-cover object-center lg:h-full"
               src={trainer?.photoUrl}
@@ -153,7 +153,7 @@ const TrainerDetails = () => {
                         to={`/booking/${trainer._id}`}
                         state={{
                           day: slot.day,
-                          slotTime: slot.slotTime,
+                          sTime: slot.slotTime,
                           sName: slot.slotName,
                           slotId: slot._id,
                           class_names: slot.classesName,
