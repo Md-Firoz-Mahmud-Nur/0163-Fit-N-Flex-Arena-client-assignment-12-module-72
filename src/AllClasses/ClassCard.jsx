@@ -18,7 +18,7 @@ const ClassCard = ({ item }) => {
           </h2>
           <p className="my-4 text-sm">{item.description}</p>
         </div>
-        <div className="flex flex-wrap items-center justify-start gap-4 lg:gap-6">
+        <div className="flex items-center justify-start gap-2">
           {item.trainer.length === 0 ? (
             <p className="font-semibold text-red-500">
               No Trainer Conduct This Class

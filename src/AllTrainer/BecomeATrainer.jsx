@@ -32,10 +32,29 @@ const BecomeATrainer = () => {
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [selectedDays, setSelectedDays] = useState([]);
   const [selectedTimes, setSelectedTimes] = useState([]);
+  // const [selectedGptSkills, setSelectedGptSkills] = useState([]);
 
-  const handleSkillsChange = (selectedOptions) => {
-    setSelectedSkills(selectedOptions);
+  // const handleSkillsChange = (selectedOptions) => {
+  //   setSelectedSkills(selectedOptions);
+  // };
+
+  // console.log(selectedSkills);
+
+  const handleSkillsChange = (skillName, checked) => {
+    if (checked) {
+      setSelectedSkills((prevSkills) => [
+        ...prevSkills,
+        { value: skillName, label: skillName },
+      ]);
+    } else {
+      setSelectedSkills((prevSkills) =>
+        prevSkills.filter((skill) => skill.value !== skillName),
+      );
+    }
   };
+
+  console.log(selectedSkills);
+
   const handleDaysChange = (selectedOptions) => {
     setSelectedDays(selectedOptions);
   };
@@ -258,7 +277,7 @@ const BecomeATrainer = () => {
             />
           </div>
         </div>
-        <div className="form-control col-span-2 w-full md:col-span-1">
+        {/* <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
             <span className="label-text">Skills</span>
           </label>
@@ -276,7 +295,29 @@ const BecomeATrainer = () => {
               required
             />
           </div>
+        </div> */}
+
+        <div className="form-control col-span-2 w-full md:col-span-2">
+          <label className="label">
+            <span className="label-text">Skills</span>
+          </label>
+          <div className="input-group flex  flex-wrap">
+            {classes.map((skill) => (
+              <label key={skill.name} className=" cursor-pointer flex flex-row-reverse m-1 p-1 ">
+                <span className="label-text ml-1">{skill.name}{"   "}</span>
+                <input
+                  type="checkbox"
+                  className="checkbox-warning checkbox"
+                  onChange={(e) =>
+                    handleSkillsChange(skill.name, e.target.checked)
+                  }
+                />
+              </label>
+
+            ))}
+          </div>
         </div>
+
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
             <span className="label-text">Class Duration</span>
@@ -292,7 +333,7 @@ const BecomeATrainer = () => {
             />
           </label>
         </div>
-        <div className="form-control col-span-2 w-full md:col-span-2">
+        <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
             <span className="label-text">Biography</span>
           </label>
@@ -308,7 +349,7 @@ const BecomeATrainer = () => {
           </label>
         </div>
         <button className="btn btn-outline col-span-2 border-2 border-amber-500 bg-transparent text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500 hover:text-white">
-          Add
+          Apply
         </button>
       </div>
       <ToastContainer></ToastContainer>

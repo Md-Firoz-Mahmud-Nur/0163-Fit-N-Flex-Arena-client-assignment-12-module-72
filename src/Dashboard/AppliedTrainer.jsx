@@ -73,7 +73,7 @@ const AppliedTrainer = () => {
                 <td className="px-6 py-4">{user.status}</td>
                 <td className="px-6 py-4">
                   <button
-                    className="btn bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                    className="btn bg-amber-500 px-4 py-2 text-white hover:bg-amber-600"
                     onClick={() => handleActionClick(user)}
                   >
                     Action

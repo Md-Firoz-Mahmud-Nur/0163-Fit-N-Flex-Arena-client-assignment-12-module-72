@@ -79,7 +79,7 @@ const BookingATrainer = () => {
               </div>
               <div className="grid grid-cols-1 justify-items-center gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
                 <div
-                  className={`${plan === "Basic" ? "bg-green-50" : ""} hover:border-primary-focus/20 hover:shadow-primary-focus/20 mx-auto flex max-w-md flex-col rounded-box border border-base-300 border-primary/10 p-4 text-center shadow-xl shadow-primary/10 transition xl:p-6`}
+                  className={`${plan === "Basic" ? "bg-amber-50" : ""} hover:border-primary-focus/20 hover:shadow-primary-focus/20 mx-auto flex max-w-md flex-col rounded-box border border-base-300 border-primary/10 p-4 text-center shadow-xl shadow-primary/10 transition xl:p-6`}
                 >
                   <h3 className="text-2xl font-semibold">Basic Membership</h3>
                   <div className="my-5 flex items-baseline justify-center lg:my-7">
@@ -89,7 +89,7 @@ const BookingATrainer = () => {
                   <ul role="list" className="mb-8 space-y-4 text-left">
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -103,7 +103,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -117,7 +117,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -133,14 +133,14 @@ const BookingATrainer = () => {
                   <div>
                     <button
                       onClick={() => setPlan("Basic")}
-                      className="btn btn-primary w-full p-2 font-bold uppercase text-white shadow"
+                      className="btn w-full bg-amber-500 p-2 font-bold uppercase text-white shadow hover:border-amber-500 hover:bg-white hover:text-amber-500"
                     >
                       Select
                     </button>
                   </div>
                 </div>
                 <div
-                  className={`${plan === "Standard" ? "bg-green-50" : ""} hover:border-primary-focus/20 hover:shadow-primary-focus/20 mx-auto flex max-w-md flex-col rounded-box border border-base-300 border-primary/10 p-4 text-center shadow-xl shadow-primary/10 transition xl:p-6`}
+                  className={`${plan === "Standard" ? "bg-amber-50" : ""} hover:border-primary-focus/20 hover:shadow-primary-focus/20 mx-auto flex max-w-md flex-col rounded-box border border-base-300 border-primary/10 p-4 text-center shadow-xl shadow-primary/10 transition xl:p-6`}
                 >
                   <h3 className="text-2xl font-semibold">
                     Standard Membership
@@ -152,7 +152,7 @@ const BookingATrainer = () => {
                   <ul role="list" className="mb-8 space-y-4 text-left">
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -166,7 +166,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -180,7 +180,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -194,7 +194,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -210,14 +210,14 @@ const BookingATrainer = () => {
                   <div>
                     <button
                       onClick={() => setPlan("Standard")}
-                      className="btn btn-primary w-full p-2 font-bold uppercase text-white shadow"
+                      className="btn w-full bg-amber-500 p-2 font-bold uppercase text-white shadow hover:border-amber-500 hover:bg-white hover:text-amber-500"
                     >
                       Select
                     </button>
                   </div>
                 </div>
                 <div
-                  className={`${plan === "Premium" ? "bg-green-50" : ""} hover:border-primary-focus/20 hover:shadow-primary-focus/20 mx-auto flex max-w-md flex-col rounded-box border border-base-300 border-primary/10 p-4 text-center shadow-xl shadow-primary/10 transition xl:p-6`}
+                  className={`${plan === "Premium" ? "bg-amber-50" : ""} hover:border-primary-focus/20 hover:shadow-primary-focus/20 mx-auto flex max-w-md flex-col rounded-box border border-base-300 border-primary/10 p-4 text-center shadow-xl shadow-primary/10 transition xl:p-6`}
                 >
                   <h3 className="text-2xl font-semibold">Premium Membership</h3>
                   <div className="my-5 flex items-baseline justify-center lg:my-7">
@@ -227,7 +227,7 @@ const BookingATrainer = () => {
                   <ul role="list" className="mb-8 space-y-4 text-left">
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -241,7 +241,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -255,7 +255,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -269,7 +269,7 @@ const BookingATrainer = () => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="h-6 w-6 text-green-500"
+                        className="h-6 w-6 text-amber-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -285,7 +285,7 @@ const BookingATrainer = () => {
                   <div>
                     <button
                       onClick={() => setPlan("Premium")}
-                      className="btn btn-primary w-full p-2 font-bold uppercase text-white shadow"
+                      className="btn w-full bg-amber-500 p-2 font-bold uppercase text-white shadow hover:border-amber-500 hover:bg-white hover:text-amber-500"
                     >
                       Select
                     </button>
@@ -296,14 +296,10 @@ const BookingATrainer = () => {
           </section>
           <section className="mt-10">
             <div className="flex items-center justify-center py-10 md:py-14 lg:py-20">
-              <div className="w-full space-y-3 rounded bg-gray-100 p-6 shadow-md md:p-8 lg:w-2/3 lg:space-y-5 lg:p-10 xl:w-1/2">
+              <div className="w-full space-y-3  border border-amber-500 shadow-xl p-6 shadow-amber-200 rounded-2xl md:p-8 lg:w-2/3 lg:space-y-5 lg:p-10 xl:w-1/2">
                 <p>
                   <span className="text-lg font-medium">Trainer Name :</span>{" "}
                   <span className="opacity-80">{trainer.name}</span>
-                </p>
-                <p>
-                  <span className="text-lg font-medium">Trainer Email :</span>{" "}
-                  <span className="opacity-80">{trainer.email}</span>
                 </p>
                 <p>
                   <span className="text-lg font-medium">Day :</span>{" "}
@@ -335,11 +331,9 @@ const BookingATrainer = () => {
                   <div className="mt-4 text-right">
                     <button
                       type="submit"
-                      className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-10 py-4 font-mono font-medium tracking-tighter text-white"
+                      className="btn btn-outline text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500"
                     >
-                      <span className="absolute h-0 w-0 rounded-full bg-green-500 transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
-                      <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
-                      <span className="relative">Join Now</span>
+                      Join Now
                     </button>
                   </div>
                 </form>

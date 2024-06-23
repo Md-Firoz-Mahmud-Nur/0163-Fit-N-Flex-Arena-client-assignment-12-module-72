@@ -119,7 +119,7 @@ const CheckoutForm = ({ bookingData, closeModal }) => {
       />
       <div className="text-right">
         <button
-          className="mt-12 rounded-lg bg-green-400 px-3 py-2 text-white disabled:cursor-not-allowed"
+          className="mt-12 rounded-lg bg-amber-500 px-3 py-2 text-white disabled:cursor-not-allowed"
           type="submit"
           disabled={!stripe || processing}
         >

@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet-async";
 const NewsLetter = () => {
   const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
-  const TABLE_HEAD = ["#", "Name", "Email"];
 
   const { data: subscribers = [], isLoading } = useQuery({
     queryKey: ["newsletter"],
@@ -32,15 +31,13 @@ const NewsLetter = () => {
         <title>Newsletter | Fit N Flex Arena</title>
       </Helmet>
       <div className="card mx-auto w-full overflow-x-auto shadow-lg md:w-3/4 lg:w-1/2">
-        <div className="card-body">
-          <table className="table w-full">
-            <thead>
+        <div className="">
+          <table className="table w-full ">
+            <thead className=" bg-amber-500">
               <tr>
-                {TABLE_HEAD.map((head) => (
-                  <th key={head} className="bg-base-200">
-                    {head}
-                  </th>
-                ))}
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
               </tr>
             </thead>
             <tbody>

@@ -69,7 +69,7 @@ const AllTrainers = () => {
     return <div className="my-8 text-center">No trainers found</div>;
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="mx-auto px-4">
       <Helmet>
         <title>All Trainers | Fit N Flex Arena</title>
       </Helmet>
@@ -77,24 +77,24 @@ const AllTrainers = () => {
         Trainers List
       </h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full rounded-xl border border-gray-200 bg-white shadow-xl">
-          <thead className="bg-amber-500 text-white">
+        <table className="rounded-xl border border-gray-200 bg-white shadow-xl">
+          <thead className="bg-amber-500 text-center text-white">
             <tr>
-              <th className="px-6 py-3 text-left">Photo</th>
-              <th className="px-6 py-3 text-left">Name</th>
-              <th className="px-6 py-3 text-left">Email</th>
-              <th className="px-6 py-3 text-left">Role</th>
-              <th className="px-6 py-3 text-left">Age</th>
-              <th className="px-6 py-3 text-left">Available Days</th>
-              <th className="px-6 py-3 text-left">Available Times</th>
-              <th className="px-6 py-3 text-left">Skills</th>
-              <th className="px-6 py-3 text-left">Status</th>
-              <th className="px-6 py-3 text-left">Action</th>
+              <th className="px-6 py-3">Photo</th>
+              <th className="px-6">Name</th>
+              <th className="py-3">Email</th>
+              <th className="py-3">Role</th>
+              <th className="py-3">Age</th>
+              <th className="py-3">Available Days</th>
+              <th className="py-3">Available Times</th>
+              <th className="py-3">Skills</th>
+              <th className="py-3">Status</th>
+              <th className="py-3">Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
             {trainers.map((trainer) => (
-              <tr key={trainer._id}>
+              <tr key={trainer._id} className="hover:bg-amber-50">
                 <td className="px-6 py-4">
                   <img
                     src={trainer.photoUrl}
@@ -102,21 +102,17 @@ const AllTrainers = () => {
                     className="h-12 w-12 rounded-full object-cover"
                   />
                 </td>
-                <td className="px-6 py-4">{trainer.name}</td>
-                <td className="px-6 py-4">{trainer.email}</td>
-                <td className="px-6 py-4">{trainer.role}</td>
-                <td className="px-6 py-4">{trainer.age}</td>
-                <td className="px-6 py-4">
-                  {trainer.availableDays.join(", ")}
-                </td>
-                <td className="px-6 py-4">
-                  {trainer.availableTimes.join(", ")}
-                </td>
-                <td className="px-6 py-4">{trainer.skills.join(", ")}</td>
-                <td className="px-6 py-4">{trainer.status}</td>
-                <td className="px-6 py-4">
+                <td>{trainer.name}</td>
+                <td>{trainer.email}</td>
+                <td>{trainer.role}</td>
+                <td>{trainer.age}</td>
+                <td>{trainer.availableDays.join(", ")}</td>
+                <td>{trainer.availableTimes.join(", ")}</td>
+                <td>{trainer.skills.join(", ")}</td>
+                <td>{trainer.status}</td>
+                <td>
                   <button
-                    className="rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+                    className="rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-600 mx-2"
                     onClick={() => handleRemove(trainer)}
                   >
                     Remove

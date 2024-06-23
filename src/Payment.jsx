@@ -32,7 +32,7 @@ const Payment = () => {
       </Helmet>
       <div className="container mx-auto">
         <div className="flex items-center justify-center">
-          <div className="flex w-full flex-col gap-1 rounded-lg bg-gray-100 p-6 shadow-md md:p-8 lg:w-2/3 lg:gap-3 lg:p-10 xl:w-1/2">
+          <div className="flex w-full flex-col gap-1 rounded-lg border border-amber-500 p-6 shadow-xl shadow-amber-200 md:p-8 lg:w-2/3 lg:gap-3 lg:p-10">
             <p>
               <span className="text-lg font-medium">Your Name : </span>{" "}
               <span className="opacity-80">{bookingData.user.name}</span>
@@ -51,10 +51,6 @@ const Payment = () => {
             <p>
               <span className="text-lg font-medium">Trainer Name :</span>{" "}
               <span className="opacity-80">{bookingData.trainer.name}</span>
-            </p>
-            <p>
-              <span className="text-lg font-medium">Trainer Email :</span>{" "}
-              <span className="opacity-80">{bookingData.trainer.email}</span>
             </p>
             <p>
               <span className="text-lg font-medium">Class Name :</span>{" "}
@@ -87,11 +83,9 @@ const Payment = () => {
             <div className="mt-6 text-right">
               <button
                 onClick={openModal}
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-10 py-4 font-mono font-medium tracking-tighter text-white"
+                className="btn btn-outline text-xl text-amber-500 hover:border-amber-500 hover:bg-amber-500"
               >
-                <span className="absolute h-0 w-0 rounded-full bg-green-500 transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
-                <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
-                <span className="relative">Pay Now</span>
+                Confirm
               </button>
             </div>
           </div>

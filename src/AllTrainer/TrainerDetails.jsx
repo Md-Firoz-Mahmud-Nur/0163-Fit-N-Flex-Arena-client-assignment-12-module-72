@@ -122,8 +122,8 @@ const TrainerDetails = () => {
               No Slots Available!
             </p>
           ) : (
-            <table className="mt-8 w-full overflow-hidden rounded-lg border border-blue-500">
-              <thead className="bg-blue-500 text-white">
+            <table className="mt-8 w-full overflow-hidden rounded-lg border border-amber-500">
+              <thead className="bg-amber-500 text-white">
                 <tr>
                   <th className="px-6 py-3 text-left">Day</th>
                   <th className="px-6 py-3 text-left">Slot Name</th>
@@ -142,7 +142,7 @@ const TrainerDetails = () => {
                       {slot.classesName.map((cls, i) => (
                         <span
                           key={i}
-                          className="mr-2 inline-block rounded-full bg-green-200 px-2 py-1 text-xs font-medium text-green-700"
+                          className="mr-2 inline-block rounded-full bg-amber-500 px-2 py-1 font-medium text-white"
                         >
                           {cls}
                         </span>
@@ -158,7 +158,7 @@ const TrainerDetails = () => {
                           slotId: slot._id,
                           class_names: slot.classesName,
                         }}
-                        className="btn btn-outline bg-green-200 text-green-700 hover:bg-green-500 hover:text-white"
+                        className="btn text-lg border border-amber-500 bg-amber-500 text-white hover:bg-transparent hover:text-amber-500 hover:border-amber-500"
                       >
                         Book <MdKeyboardArrowRight className="inline" />
                       </Link>

@@ -64,6 +64,7 @@ const AddNewForum = () => {
         likes: 0,
         dislikes: 0,
         postDate: new Date().toLocaleDateString(),
+        postDate1: Math.floor(Date.now() / 1000),
         title,
         image: photo_url,
         description,

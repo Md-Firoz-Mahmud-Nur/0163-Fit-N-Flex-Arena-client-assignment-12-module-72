@@ -50,13 +50,13 @@ const AllTrainer = () => {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {trainers.map((trainer) => (
               <div key={trainer._id}>
-                <div className="card rounded-lg border border-amber-500 shadow-xl transition-shadow duration-300 hover:shadow-amber-300 h-full">
+                <div className="card h-full rounded-lg border border-amber-500 shadow-xl transition-shadow duration-300 hover:shadow-amber-300">
                   <img
                     src={trainer?.photoUrl}
                     alt={trainer?.name}
                     className="h-56 w-full rounded-t-lg object-cover object-center"
                   />
-                  <div className="p-6 h-full flex flex-col">
+                  <div className="flex h-full flex-col p-6">
                     <h3 className="mb-2 text-xl font-semibold text-gray-900">
                       {trainer?.name}
                     </h3>
@@ -67,7 +67,7 @@ const AllTrainer = () => {
                       {trainer.skills.map((skill, i) => (
                         <span
                           key={i}
-                          className="rounded-full border bg-amber-500 px-3 py-1  font-semibold text-white"
+                          className="rounded-full border bg-amber-500 px-3 py-1 font-semibold text-white"
                         >
                           {skill}
                         </span>

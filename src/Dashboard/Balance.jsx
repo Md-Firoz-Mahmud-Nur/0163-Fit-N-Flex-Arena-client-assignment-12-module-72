@@ -21,8 +21,6 @@ const Balance = () => {
 
   const axiosSecure = useAxiosSecure();
 
-  const TABLE_HEAD = ["#", "Member Email", "Trx Id", "Amount"];
-
   const { data: balanceData = {}, isLoading } = useQuery({
     queryKey: ["balance", user?.email],
     enabled: !loading && !!user,
@@ -71,15 +69,15 @@ const Balance = () => {
     );
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 py-8 md:py-12 lg:py-16">
+    <div className="min-h-screen w-full py-8 md:py-12 lg:py-16">
       <Helmet>
         <title>Balance | Fit N Flex Arena</title>
       </Helmet>
       <div className="mx-auto mb-6 w-[300px] lg:mb-8">
-        <div className="overflow-hidden rounded-lg bg-white shadow-md">
+        <div className="overflow-hidden rounded-lg border border-amber-500 bg-white text-center shadow-md shadow-amber-200">
           <div className="flex flex-col justify-between gap-8 px-6 py-8">
-            <h3 className="mb-4 text-5xl font-bold text-yellow-600">Balance</h3>
-            <h2 className="mb-8 text-3xl font-bold text-green-600">
+            <h3 className="mb-4 text-5xl font-bold text-amber-500">Balance</h3>
+            <h2 className="mb-8 text-3xl font-bold text-amber-500">
               Total : {balanceData.info[0].totalBalance} $
             </h2>
           </div>
@@ -88,13 +86,12 @@ const Balance = () => {
       <div className="mx-auto w-full lg:w-10/12 2xl:w-3/4">
         <div className="overflow-x-auto">
           <table className="table w-full">
-            <thead>
+            <thead className="bg-amber-500 text-white">
               <tr>
-                {TABLE_HEAD.map((head) => (
-                  <th key={head} className="bg-gray-200 p-4">
-                    {head}
-                  </th>
-                ))}
+                <th>#</th>
+                <th>Member Email</th>
+                <th>Trx Id</th>
+                <th>Amount</th>
               </tr>
             </thead>
             <tbody>

@@ -10,7 +10,7 @@ const AvatarCard = ({ trainer }) => {
         </div>
         <img
           src={trainer.photoUrl}
-          className="relative z-10 size-14 shrink-0 rounded-xl object-cover hover:shadow-xl hover:shadow-amber-300"
+          className="relative z-10 size-14 shrink-0 rounded-xl object-cover object-top hover:shadow-xl hover:shadow-amber-300"
         />
       </div>
     </Link>

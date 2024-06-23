@@ -12,13 +12,13 @@ const ForumDetails = () => {
       </Helmet>
       <div className="mx-auto max-w-screen-xl p-4 sm:p-10 md:p-16">
         <div
-          className="overflow-hidden bg-cover bg-center text-center"
+          className="overflow-hidden rounded-3xl border border-amber-500 bg-cover bg-center text-center shadow-lg shadow-amber-200"
           style={{ minHeight: "500px", backgroundImage: `url(${blog.image})` }}
           title="Blog Image"
         ></div>
-        <div className="relative mx-auto max-w-3xl pt-3">
-          <div className="mt-3 flex flex-col justify-between rounded-lg bg-white p-4 shadow-lg">
-            <div className="relative top-0 -mt-32 rounded-lg bg-white p-6 shadow-lg">
+        <div className="mx-auto max-w-3xl pt-3">
+          <div className="mt-3 flex flex-col justify-between rounded-lg bg-white p-4">
+            <div className="rounded-lg border border-amber-500 bg-white p-6 shadow-lg shadow-amber-500">
               <h1 className="mb-2 pt-3 text-3xl font-bold text-gray-900">
                 {blog.title}
               </h1>
@@ -30,7 +30,7 @@ const ForumDetails = () => {
                     className="h-10 w-10 rounded-full"
                   />
                   <div>
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-md font-medium text-gray-900">
                       Written By: <span>{blog.author}</span>
                     </p>
                     <p className="text-sm font-medium text-gray-900">
@@ -38,7 +38,7 @@ const ForumDetails = () => {
                     </p>
                   </div>
                 </div>
-                <span className="rounded bg-orange-500 px-2 py-0.5 text-sm font-semibold uppercase text-white">
+                <span className="rounded bg-amber-500 px-2 py-0.5 text-sm font-semibold uppercase text-white">
                   {blog.role}
                 </span>
               </div>

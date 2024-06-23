@@ -13,6 +13,7 @@ const LatestCommunityPosts = () => {
       return data;
     },
   });
+  console.log(blogs);
 
   return (
     <section className="my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">
@@ -30,11 +31,11 @@ const LatestCommunityPosts = () => {
             <span className="loading loading-dots loading-lg"></span>
           </div>
         ) : (
-          <div className="mx-auto flex max-w-[1440px] flex-wrap justify-center gap-8">
+          <div className="mx-auto grid grid-cols-1 justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogs.map((blog) => (
               <div
                 key={blog._id}
-                className="card w-full max-w-sm rounded-lg border border-amber-500 shadow-xl transition-shadow duration-300 hover:shadow-amber-300"
+                className="card w-full rounded-lg border border-amber-500 shadow-xl transition-shadow duration-300 hover:shadow-amber-300"
               >
                 <img
                   src={blog.image}
@@ -44,8 +45,11 @@ const LatestCommunityPosts = () => {
                 <div className="flex flex-grow flex-col justify-between p-6">
                   <div>
                     <div className="mb-4 flex items-center justify-between">
-                      <p className="inline-block border-b-2 border-amber-500 text-xs font-bold capitalize">
+                      <p className="inline-block border-b-2 border-amber-500 text-xl font-bold capitalize">
                         {blog.author}
+                        <span className="ml-4 rounded-sm bg-amber-500 px-2 py-0.5 text-sm font-semibold uppercase text-white">
+                          {blog.role}
+                        </span>
                       </p>
                       <p className="text-xs text-gray-500">{blog.postDate}</p>
                     </div>
@@ -58,7 +62,7 @@ const LatestCommunityPosts = () => {
                   </div>
                   <div className="mt-4 flex justify-end">
                     <Link
-                      to={`/blog/${blog._id}`}
+                      to={`/forumDetails/${blog._id}`}
                       className="flex items-center gap-1 text-base font-black uppercase text-amber-500 hover:underline"
                     >
                       Read More <ImArrowRight2 />

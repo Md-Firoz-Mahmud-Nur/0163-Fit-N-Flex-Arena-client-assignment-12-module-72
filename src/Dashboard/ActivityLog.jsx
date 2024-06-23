@@ -86,7 +86,7 @@ const ActivityLog = () => {
                         {trainer?.status === "rejected"
                           ? "Rejected"
                           : trainer?.status === "pending"
-                            ? "Wait For Approval"
+                            ? "Pending"
                             : "No Application"}
                       </td>
                       <td className="p-4">
