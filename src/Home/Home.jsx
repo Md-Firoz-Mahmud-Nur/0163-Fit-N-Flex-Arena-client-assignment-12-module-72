@@ -6,10 +6,14 @@ import FeaturedSection from "./FeaturedSection";
 import Testimonials from "./Testimonials";
 import LatestCommunityPosts from "./LatestCommunityPosts";
 import Team from "./Team";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <div className="container mx-auto my-20">
+      <Helmet>
+        <title>Home | Fit N Flex Arena</title>
+      </Helmet>
       <Banner></Banner>
       <FeaturedSection></FeaturedSection>
       <AboutSection></AboutSection>

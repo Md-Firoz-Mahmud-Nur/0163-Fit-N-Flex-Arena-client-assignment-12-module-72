@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import CSS for react-toastify
 import { useNavigate } from "react-router-dom";
 import useClassName from "../Hooks/useClassName";
+import { Helmet } from "react-helmet-async";
 
 const BecomeATrainer = () => {
   const { user } = useContext(AuthContext);
@@ -56,7 +57,9 @@ const BecomeATrainer = () => {
 
     try {
       // Fetch user data to check status
-      const userResponse = await fetch(`${import.meta.env.VITE_SERVER}/users/${email}`);
+      const userResponse = await fetch(
+        `${import.meta.env.VITE_SERVER}/users/${email}`,
+      );
       const userData = await userResponse.json();
 
       // Check if user has a pending application
@@ -84,22 +87,25 @@ const BecomeATrainer = () => {
       }
 
       // Proceed with the PUT request to update user details
-      const response = await fetch(`${import.meta.env.VITE_SERVER}/users/${email}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER}/users/${email}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            skills: selectedSkillsValues,
+            availableDays: selectedDayValues,
+            availableTimes: selectedTimeValues,
+            status: "pending",
+            age,
+            classDuration,
+            biography,
+            experience,
+          }),
         },
-        body: JSON.stringify({
-          skills: selectedSkillsValues,
-          availableDays: selectedDayValues,
-          availableTimes: selectedTimeValues,
-          status: "pending",
-          age,
-          classDuration,
-          biography,
-          experience,
-        }),
-      });
+      );
 
       if (response.ok) {
         toast.success("Submission successful. Please wait for redirect...", {
@@ -120,7 +126,9 @@ const BecomeATrainer = () => {
   return (
     <form onSubmit={handleSubmit} className="mt-10">
       <div className="grid grid-cols-2 gap-4">
-        {/*  */}
+        <Helmet>
+          <title>Become A Trainer | Fit N Flex Arena</title>
+        </Helmet>
         <div className="form-control col-span-2 w-full md:col-span-1">
           <label className="label">
             <span className="label-text">Full Name</span>

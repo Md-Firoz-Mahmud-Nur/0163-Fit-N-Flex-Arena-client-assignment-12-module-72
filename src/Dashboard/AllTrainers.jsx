@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AllTrainers = () => {
   const axiosSecure = useAxiosSecure();
@@ -69,6 +70,9 @@ const AllTrainers = () => {
 
   return (
     <div className="container mx-auto px-4">
+      <Helmet>
+        <title>All Trainers | Fit N Flex Arena</title>
+      </Helmet>
       <h1 className="my-8 text-center text-3xl font-semibold text-amber-500">
         Trainers List
       </h1>

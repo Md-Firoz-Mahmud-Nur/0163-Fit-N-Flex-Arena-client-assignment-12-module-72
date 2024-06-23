@@ -31,7 +31,7 @@ const AllTrainer = () => {
     <section className="my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">
       <div className="min-h-[60vh] px-4">
         <Helmet>
-          <title>All Trainers | Fit N Flex Arena</title>
+          <title>All Trainer | Fit N Flex Arena</title>
         </Helmet>
         <div className="container mx-auto">
           <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">

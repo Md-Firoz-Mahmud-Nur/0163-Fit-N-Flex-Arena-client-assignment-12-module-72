@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
@@ -37,6 +38,9 @@ const UserProfile = () => {
 
   return (
     <section className="my-20 rounded-3xl py-12">
+      <Helmet>
+        <title>User Profile | Fit N Flex Arena</title>
+      </Helmet>
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">
           User Profile

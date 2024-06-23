@@ -8,7 +8,7 @@ const ForumDetails = () => {
   return (
     <div className="container mx-auto">
       <Helmet>
-        <title>Blog | Fit N Flex Arena</title>
+        <title>Forum Details | Fit N Flex Arena</title>
       </Helmet>
       <div className="mx-auto max-w-screen-xl p-4 sm:p-10 md:p-16">
         <div

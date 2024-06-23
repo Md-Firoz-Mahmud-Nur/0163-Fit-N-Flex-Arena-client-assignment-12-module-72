@@ -37,7 +37,7 @@ const AllClasses = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>Fit N Flex Arena | All Classes</title>
+        <title>All Classes | Fit N Flex Arena</title>
       </Helmet>
       <div className="container mx-auto py-8">
         <div className="mb-12 flex justify-center">

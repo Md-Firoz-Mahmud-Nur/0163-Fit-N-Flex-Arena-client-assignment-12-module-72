@@ -57,7 +57,7 @@ const Payment = () => {
             </p>
             <p>
               <span className="text-lg font-medium">Class Name :</span>{" "}
-              <span className="opacity-80">{bookingData.class.cName.label}</span>
+              <span className="opacity-80">{bookingData.class.className.label}</span>
             </p>
             <p>
               <span className="text-lg font-medium">Day :</span>{" "}
@@ -65,11 +65,11 @@ const Payment = () => {
             </p>
             <p>
               <span className="text-lg font-medium">Slot :</span>{" "}
-              <span className="opacity-80">{bookingData.class.sName}</span>
+              <span className="opacity-80">{bookingData.class.slotName}</span>
             </p>
             <p>
               <span className="text-lg font-medium">Slot Time :</span>{" "}
-              <span className="opacity-80">{bookingData.class.sTime} hr</span>
+              <span className="opacity-80">{bookingData.class.slotTime} hr</span>
             </p>
 
             <div className="bg-blue-gray-600 h-[1px] w-full"></div>

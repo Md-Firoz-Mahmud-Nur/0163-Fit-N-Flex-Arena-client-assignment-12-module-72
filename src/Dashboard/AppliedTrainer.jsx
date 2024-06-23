@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AppliedTrainer = () => {
   const axiosSecure = useAxiosSecure();
@@ -34,6 +35,9 @@ const AppliedTrainer = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Applied Trainer | Fit N Flex Arena</title>
+      </Helmet>
       <h1 className="my-8 text-center text-3xl font-semibold text-amber-500">
         Pending Users
       </h1>
@@ -41,15 +45,19 @@ const AppliedTrainer = () => {
         <table className="min-w-full rounded-xl border border-gray-200 bg-white shadow-xl">
           <thead className="bg-amber-500 text-white">
             <tr>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Name</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Email</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Role</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Age</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Available Days</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Available Times</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Skills</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Status</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Action</th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">Name</th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">Email</th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">Role</th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">Age</th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">
+                Available Days
+              </th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">
+                Available Times
+              </th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">Skills</th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">Status</th>
+              <th className="border-b-2 border-gray-300 px-6 py-3">Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const NewsLetter = () => {
   const axiosSecure = useAxiosSecure();
@@ -27,6 +28,9 @@ const NewsLetter = () => {
 
   return (
     <div className="flex min-h-[70vh] w-full items-center justify-center">
+      <Helmet>
+        <title>Newsletter | Fit N Flex Arena</title>
+      </Helmet>
       <div className="card mx-auto w-full overflow-x-auto shadow-lg md:w-3/4 lg:w-1/2">
         <div className="card-body">
           <table className="table w-full">

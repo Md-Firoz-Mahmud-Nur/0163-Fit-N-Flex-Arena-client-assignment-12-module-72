@@ -121,7 +121,7 @@ const AddNewSlot = () => {
   return (
     <div className="min-h-[60vh] py-8 md:py-12 lg:py-16">
       <Helmet>
-        <title>Add New Slot</title>
+        <title>Add New Slot | Fit N Flex Arena</title>
       </Helmet>
       <div className="flex h-full w-full items-center justify-center">
         <div className="w-full   p-6  md:p-8 lg:w-10/12 lg:p-10 xl:w-3/4 my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">

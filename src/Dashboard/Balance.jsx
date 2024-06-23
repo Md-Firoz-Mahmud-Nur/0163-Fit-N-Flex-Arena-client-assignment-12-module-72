@@ -4,6 +4,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Pie } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Helmet } from "react-helmet-async";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -71,6 +72,9 @@ const Balance = () => {
 
   return (
     <div className="min-h-screen w-full bg-gray-50 py-8 md:py-12 lg:py-16">
+      <Helmet>
+        <title>Balance | Fit N Flex Arena</title>
+      </Helmet>
       <div className="mx-auto mb-6 w-[300px] lg:mb-8">
         <div className="overflow-hidden rounded-lg bg-white shadow-md">
           <div className="flex flex-col justify-between gap-8 px-6 py-8">
@@ -114,7 +118,7 @@ const Balance = () => {
           <span className="loading loading-dots loading-lg"></span>
         </div>
       ) : (
-        <div className="py-8 md:py-10 lg:py-12 size-96 mx-auto">
+        <div className="mx-auto size-96 py-8 md:py-10 lg:py-12">
           <Pie data={pieChartData} options={pieChartOptions} />
         </div>
       )}

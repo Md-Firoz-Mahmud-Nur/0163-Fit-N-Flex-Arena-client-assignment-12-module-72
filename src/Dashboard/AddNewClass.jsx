@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../Hooks/useAuth";
 import { uploadImage } from "../Hooks/imageUpload";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AddNewClass = () => {
   const { user } = useAuth();
@@ -58,6 +59,9 @@ const AddNewClass = () => {
 
   return (
     <div className="flex min-h-[80vh] w-full items-center justify-center p-4 lg:p-8">
+      <Helmet>
+        <title>Add New Class | Fit N Flex Arena</title>
+      </Helmet>
       <div className="w-full max-w-3xl rounded-3xl border border-amber-500 bg-white shadow-xl shadow-amber-500">
         <form onSubmit={handleAddNewClass} className="space-y-6 p-6 lg:p-8">
           <h2 className="text-center text-2xl font-semibold text-amber-500">

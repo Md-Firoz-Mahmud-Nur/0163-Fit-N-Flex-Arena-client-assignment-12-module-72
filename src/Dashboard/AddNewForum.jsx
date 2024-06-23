@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const AddNewForum = () => {
   const { user, loading } = useAuth();
@@ -94,6 +95,9 @@ const AddNewForum = () => {
   return (
 
       <div className="container mx-auto px-4">
+         <Helmet>
+          <title>Add New Forum | Fit N Flex Arena</title>
+        </Helmet>
         <div className="flex w-full items-center justify-center">
           <div className="my-20 w-full rounded-3xl border border-amber-500 bg-white p-8 py-12 shadow-xl shadow-amber-200 lg:w-10/12 2xl:w-3/4">
             <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">

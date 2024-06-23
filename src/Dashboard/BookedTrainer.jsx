@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const BookedTrainer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,6 +49,9 @@ const BookedTrainer = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Booked Trainer | Fit N Flex Arena</title>
+      </Helmet>
       {myBooking.length === 0 ? (
         <div className="flex min-h-[70vh] w-full items-center justify-center">
           <p className="text-3xl font-medium text-gray-700 md:text-4xl lg:text-5xl">
@@ -83,15 +87,15 @@ const BookedTrainer = () => {
                           </td>
                           <td className="p-4">
                             <p className="font-normal">
-                              {slot?.class?.cName.label}
+                              {slot?.class?.className.label}
                             </p>
                           </td>
                           <td className="p-4">
-                            <p className="font-normal">{slot?.class?.sName}</p>
+                            <p className="font-normal">{slot?.class?.slotName}</p>
                           </td>
                           <td className="p-4">
                             <p className="font-normal">
-                              {slot?.class?.sTime} Hr
+                              {slot?.class?.slotTime} Hr
                             </p>
                           </td>
                           <td className="p-4">

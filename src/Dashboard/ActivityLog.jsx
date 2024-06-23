@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const ActivityLog = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,6 +50,9 @@ const ActivityLog = () => {
 
   return (
     <section className="my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">
+      <Helmet>
+        <title>Activity Log | Fit N Flex Arena</title>
+      </Helmet>
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">
           Activity Log

@@ -153,7 +153,7 @@ const TrainerDetails = () => {
                         to={`/booking/${trainer._id}`}
                         state={{
                           day: slot.day,
-                          sTime: slot.slotTime,
+                          slotTime: slot.slotTime,
                           sName: slot.slotName,
                           slotId: slot._id,
                           class_names: slot.classesName,

@@ -4,6 +4,7 @@ import useTrainer from "../Hooks/useTrainer";
 import useMember from "../Hooks/useMember";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -22,6 +23,9 @@ const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen">
+      <Helmet>
+        <title>Dashboard | Fit N Flex Arena</title>
+      </Helmet>
       <div className="sticky top-0 min-h-screen w-64 bg-amber-500 p-4 pt-0">
         <nav className="sticky top-0 space-y-2 pt-4">
           {isAdmin && (
@@ -190,15 +194,9 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          {isAdmin && (
-              <Navigate to="/dashboard/newsletter"></Navigate>
-            )}
-          {isMember && (
-              <Navigate to="/dashboard/activityLog"></Navigate>
-            )}
-          {isMember && (
-              <Navigate to="/dashboard/activityLog"></Navigate>
-            )}
+          {isAdmin && <Navigate to="/dashboard/newsletter"></Navigate>}
+          {isTrainer && <Navigate to="/dashboard/manageSlots"></Navigate>}
+          {isMember && <Navigate to="/dashboard/activityLog"></Navigate>}
           <hr className="my-4 border-gray-300" />
           <li className="list-none">
             <NavLink
@@ -231,7 +229,7 @@ const Dashboard = () => {
           </li>
         </nav>
       </div>
-      <div className="flex-1  p-6">
+      <div className="flex-1 p-6">
         <Outlet />
       </div>
     </div>

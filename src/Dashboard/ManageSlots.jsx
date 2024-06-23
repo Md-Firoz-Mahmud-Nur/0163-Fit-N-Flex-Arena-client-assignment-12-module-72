@@ -7,6 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet-async";
 
 const ManageSlots = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,18 +15,26 @@ const ManageSlots = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: slots = [], isLoading, refetch } = useQuery({
+  const {
+    data: slots = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["manageMySlots", user?.email],
     enabled: !!user && !loading,
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/manageMySlots/${user?.email}?email=${user?.email}`);
+      const { data } = await axiosSecure.get(
+        `/manageMySlots/${user?.email}?email=${user?.email}`,
+      );
       return data;
     },
   });
 
   const { mutateAsync } = useMutation({
     mutationFn: async (id) => {
-      const { data } = await axiosSecure.delete(`/deleteSlot/${id}?email=${user?.email}`);
+      const { data } = await axiosSecure.delete(
+        `/deleteSlot/${id}?email=${user?.email}`,
+      );
       return data;
     },
     onSuccess: (data) => {
@@ -81,14 +90,23 @@ const ManageSlots = () => {
 
   return (
     <section className="my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">
+      <Helmet>
+        <title>Manage Slots | Fit N Flex Arena</title>
+      </Helmet>
       <div className="container mx-auto px-4">
-        <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">Manage Slots</h2>
-        <p className="mb-8 text-center text-gray-700">Review and manage your slots.</p>
+        <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">
+          Manage Slots
+        </h2>
+        <p className="mb-8 text-center text-gray-700">
+          Review and manage your slots.
+        </p>
         <div className="flex w-full items-center justify-center">
           <div className="card w-full shadow-xl md:w-3/4 lg:w-full">
             {slots.length === 0 ? (
               <div className="flex min-h-[70vh] w-full items-center justify-center">
-                <p className="text-3xl font-medium text-gray-700 md:text-4xl lg:text-5xl">No Available slot!</p>
+                <p className="text-3xl font-medium text-gray-700 md:text-4xl lg:text-5xl">
+                  No Available slot!
+                </p>
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -105,18 +123,28 @@ const ManageSlots = () => {
                   </thead>
                   <tbody>
                     {slots.map((slot, i) => (
-                      <tr key={i} className="border-2 bg-white text-center hover:border-amber-500 hover:bg-gray-100 hover:shadow-md">
+                      <tr
+                        key={i}
+                        className="border-2 bg-white text-center hover:border-amber-500 hover:bg-gray-100 hover:shadow-md"
+                      >
                         <td className="p-4">{slot.day}</td>
                         <td className="p-4">{slot.slotName}</td>
                         <td className="p-4">{slot.slotTime} hr</td>
                         <td className="p-4">
                           {slot.classesName.map((singleClass, i) => (
-                            <span className="mr-2 rounded border border-red-100 text-xs font-medium text-green-500" key={i}>
+                            <span
+                              className="mr-2 rounded border border-red-100 text-xs font-medium text-green-500"
+                              key={i}
+                            >
                               {singleClass}
                             </span>
                           ))}
                         </td>
-                        <td className={`p-4 ${slot.status === "booked" ? "text-red-500" : "text-green-500"}`}>{slot.status}</td>
+                        <td
+                          className={`p-4 ${slot.status === "booked" ? "text-red-500" : "text-green-500"}`}
+                        >
+                          {slot.status}
+                        </td>
                         <td className="p-4">
                           <button
                             onClick={() => openModal(slot.bookedBy)}
@@ -127,7 +155,7 @@ const ManageSlots = () => {
                           </button>
                           <button
                             onClick={() => handleDeleteSlot(slot._id)}
-                            className="ml-2 border-1 btn btn-outline border-amber-500 bg-red-300 text-xl hover:border-amber-500 hover:bg-amber-500 hover:text-white"
+                            className="border-1 btn btn-outline ml-2 border-amber-500 bg-red-300 text-xl hover:border-amber-500 hover:bg-amber-500 hover:text-white"
                           >
                             <RxCross2 className="text-xl" />
                           </button>
@@ -146,10 +174,17 @@ const ManageSlots = () => {
               <div className="modal-box relative w-full max-w-md rounded-xl border border-[#DC5F00] p-6">
                 <div className="p-4">
                   <div>
-                    <textarea className="textarea textarea-bordered w-full" placeholder="Message" value={slotBookUser.message} readOnly></textarea>
+                    <textarea
+                      className="textarea textarea-bordered w-full"
+                      placeholder="Message"
+                      value={slotBookUser.message}
+                      readOnly
+                    ></textarea>
                   </div>
                   <div className="mt-4 text-right">
-                    <button onClick={closeModal} className="btn-danger btn">Close</button>
+                    <button onClick={closeModal} className="btn-danger btn">
+                      Close
+                    </button>
                   </div>
                 </div>
               </div>

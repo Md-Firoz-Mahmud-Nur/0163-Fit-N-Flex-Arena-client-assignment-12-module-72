@@ -48,7 +48,7 @@ const Login = () => {
         photoURL: result.user?.photoURL,
         role: "member",
       };
-      axiosPublic.post("/users", userInfo).then((res) => {});
+      axiosPublic.post("/users", userInfo).then(() => {});
 
       const userLastLoinTime = {
         lastSignInTime: result.user?.metadata?.lastSignInTime,
@@ -71,7 +71,7 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Fit N Flex Arena | Login</title>
+        <title>Login | Fit N Flex Arena</title>
       </Helmet>
       <div className="hero p-5 md:p-20">
         <div className="hero-content flex-col">

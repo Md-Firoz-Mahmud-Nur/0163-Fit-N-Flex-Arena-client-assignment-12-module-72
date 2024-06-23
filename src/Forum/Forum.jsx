@@ -69,11 +69,11 @@ const Forum = () => {
   return (
     <div className="min-h-[60vh] py-8 md:py-12 lg:py-16">
       <Helmet>
-        <title>Community Posts | Fit N Flex Arena</title>
+        <title>Forum | Fit N Flex Arena</title>
       </Helmet>
       <div className="container mx-auto">
         <h2 className="mb-8 text-center text-3xl font-semibold text-amber-500">
-          Latest Community Posts
+          Latest Forum Posts
         </h2>
         <p className="mb-8 text-center text-gray-700">
           Stay updated with the newest discussions and topics in our community.

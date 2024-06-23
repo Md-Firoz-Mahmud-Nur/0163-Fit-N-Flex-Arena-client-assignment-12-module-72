@@ -33,10 +33,10 @@ const BookingATrainer = () => {
 
     const bookingData = {
       class: {
-        cName: className,
+        className: className,
         day: state.day,
-        sTime: state.sTime,
-        sName: state.sName,
+        slotTime: state.slotTime,
+        slotName: state.slotName,
         sId: state.slotId,
       },
       package: plan,
@@ -310,11 +310,11 @@ const BookingATrainer = () => {
                 </p>
                 <p>
                   <span className="text-lg font-medium">Slot Name :</span>{" "}
-                  <span className="opacity-80">{state.sName}</span>
+                  <span className="opacity-80">{state.slotName}</span>
                 </p>
                 <p>
                   <span className="text-lg font-medium">Slot Time :</span>{" "}
-                  <span className="opacity-80">{state.sTime} hr</span>
+                  <span className="opacity-80">{state.slotTime} hr</span>
                 </p>
                 <p>
                   <span className="text-lg font-medium">Package :</span>{" "}
