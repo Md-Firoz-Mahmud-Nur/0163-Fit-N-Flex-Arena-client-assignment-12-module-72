@@ -115,7 +115,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="container navbar mx-auto mb-10 mt-6 bg-base-100 sticky top-0 z-50 shadow-xl shadow-amber-100">
+    <div className="container navbar mx-auto mb-10 mt-6 bg-base-100 sticky top-0 z-50 shadow-xl border-b border-amber-500 shadow-amber-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
