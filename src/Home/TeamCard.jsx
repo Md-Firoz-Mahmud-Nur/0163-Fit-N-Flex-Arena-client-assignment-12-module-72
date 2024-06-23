@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 
 const TeamCard = ({ team }) => {
   return (
-    <div className="mx-auto my-12 lg:my-16 xl:my-20">
-      <div className="mx-auto h-full w-full max-w-4xl overflow-hidden rounded-lg border border-amber-500 bg-white shadow-xl transition-shadow duration-300 hover:shadow-amber-300 lg:flex lg:rounded-lg">
+    <div className="mx-auto ">
+      <div className="mx-auto h-full w-full  overflow-hidden rounded-lg border border-amber-500 bg-white shadow-xl transition-shadow duration-300 hover:shadow-amber-300 lg:flex lg:rounded-lg">
         <div
-          className="h-64 lg:block lg:h-auto lg:w-64 lg:rounded-l-lg lg:rounded-r-none lg:bg-cover lg:bg-center"
+          className="h-64 lg:block lg:h-auto lg:w-full  lg:rounded-l-lg lg:rounded-r-none lg:bg-cover lg:bg-center bg-no-repeat bg-cover bg-top"
           style={{ backgroundImage: `url(${team.photoUrl})` }}
         ></div>
         <div className="p-6 lg:p-8">
