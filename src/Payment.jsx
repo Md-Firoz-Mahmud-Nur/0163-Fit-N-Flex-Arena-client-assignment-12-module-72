@@ -8,7 +8,6 @@ import CheckoutForm from "./CheckoutForm";
 const Payment = () => {
   const { state } = useLocation();
   const bookingData = state?.bookingData;
-  console.log(bookingData);
   const [isOpen, setIsOpen] = useState(false);
 
   const stripePromise = loadStripe(

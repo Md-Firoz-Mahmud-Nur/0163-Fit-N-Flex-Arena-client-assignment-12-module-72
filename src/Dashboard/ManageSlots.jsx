@@ -122,48 +122,43 @@ const ManageSlots = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {slots.map(
-                      (slot, i) => (
-                        console.log(slot),
-                        (
-                          <tr
-                            key={i}
-                            className="border-2 bg-white text-center hover:border-amber-500 hover:bg-gray-100 hover:shadow-md"
+                    {slots.map((slot, i) => (
+                      <tr
+                        key={i}
+                        className="border-2 bg-white text-center hover:border-amber-500 hover:bg-gray-100 hover:shadow-md"
+                      >
+                        <td className="p-4">{slot.day}</td>
+                        <td className="p-4">{slot.slotName}</td>
+                        <td className="p-4">{slot.slotTime} hr</td>
+                        <td className="p-4">
+                          {
+                            <span className="font-semibold" key={i}>
+                              {slot.bookedBy?.class_name?.value}
+                            </span>
+                          }
+                        </td>
+                        <td
+                          className={`p-4 ${slot.status === "booked" ? "text-red-500" : "text-green-500"}`}
+                        >
+                          {slot.status}
+                        </td>
+                        <td className="p-4">
+                          <button
+                            onClick={() => openModal(slot.bookedBy)}
+                            className={`border-1 btn btn-outline border-amber-500 bg-red-300 text-xl hover:border-amber-500 hover:bg-amber-500 hover:text-white ${slot.status !== "booked" && "cursor-not-allowed bg-gray-500 text-gray-300"}`}
+                            disabled={slot.status !== "booked"}
                           >
-                            <td className="p-4">{slot.day}</td>
-                            <td className="p-4">{slot.slotName}</td>
-                            <td className="p-4">{slot.slotTime} hr</td>
-                            <td className="p-4">
-                              {
-                                <span className="font-semibold" key={i}>
-                                  {slot.bookedBy?.class_name?.value}
-                                </span>
-                              }
-                            </td>
-                            <td
-                              className={`p-4 ${slot.status === "booked" ? "text-red-500" : "text-green-500"}`}
-                            >
-                              {slot.status}
-                            </td>
-                            <td className="p-4">
-                              <button
-                                onClick={() => openModal(slot.bookedBy)}
-                                className={`border-1 btn btn-outline border-amber-500 bg-red-300 text-xl hover:border-amber-500 hover:bg-amber-500 hover:text-white ${slot.status !== "booked" && "cursor-not-allowed bg-gray-500 text-gray-300"}`}
-                                disabled={slot.status !== "booked"}
-                              >
-                                <IoEyeOutline className="text-xl" />
-                              </button>
-                              <button
-                                onClick={() => handleDeleteSlot(slot._id)}
-                                className="border-1 btn btn-outline ml-2 border-amber-500 bg-red-300 text-xl hover:border-amber-500 hover:bg-amber-500 hover:text-white"
-                              >
-                                <RxCross2 className="text-xl" />
-                              </button>
-                            </td>
-                          </tr>
-                        )
-                      ),
-                    )}
+                            <IoEyeOutline className="text-xl" />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteSlot(slot._id)}
+                            className="border-1 btn btn-outline ml-2 border-amber-500 bg-red-300 text-xl hover:border-amber-500 hover:bg-amber-500 hover:text-white"
+                          >
+                            <RxCross2 className="text-xl" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

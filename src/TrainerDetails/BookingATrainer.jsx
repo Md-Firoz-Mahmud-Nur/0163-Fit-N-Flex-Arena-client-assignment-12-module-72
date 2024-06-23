@@ -19,7 +19,6 @@ const BookingATrainer = () => {
 
   const trainer = useLoaderData();
   const { state } = useLocation();
-  console.log(state.sName);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

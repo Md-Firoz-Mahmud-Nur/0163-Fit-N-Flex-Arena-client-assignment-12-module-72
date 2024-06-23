@@ -38,7 +38,6 @@ const BecomeATrainer = () => {
   //   setSelectedSkills(selectedOptions);
   // };
 
-  // console.log(selectedSkills);
 
   const handleSkillsChange = (skillName, checked) => {
     if (checked) {
@@ -53,7 +52,6 @@ const BecomeATrainer = () => {
     }
   };
 
-  console.log(selectedSkills);
 
   const handleDaysChange = (selectedOptions) => {
     setSelectedDays(selectedOptions);

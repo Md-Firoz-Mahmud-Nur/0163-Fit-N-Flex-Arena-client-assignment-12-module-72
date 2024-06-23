@@ -13,7 +13,6 @@ const LatestCommunityPosts = () => {
       return data;
     },
   });
-  console.log(blogs);
 
   return (
     <section className="my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">
