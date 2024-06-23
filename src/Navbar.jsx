@@ -21,27 +21,93 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `block rounded-md p-2 ${
+              isActive
+                ? "bg-amber-600 text-white"
+                : "hover:bg-amber-600 hover:text-white"
+            }`
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/allTrainer">All Trainer</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `block rounded-md p-2 ${
+              isActive
+                ? "bg-amber-600 text-white"
+                : "hover:bg-amber-600 hover:text-white"
+            }`
+          }
+          to="/allTrainer"
+        >
+          All Trainer
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/allClasses">All Classes</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `block rounded-md p-2 ${
+              isActive
+                ? "bg-amber-600 text-white"
+                : "hover:bg-amber-600 hover:text-white"
+            }`
+          }
+          to="/allClasses"
+        >
+          All Classes
+        </NavLink>
       </li>
       {!user ? (
         <></>
       ) : (
         <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `block rounded-md p-2 ${
+                isActive
+                  ? "bg-amber-600 text-white"
+                  : "hover:bg-amber-600 hover:text-white"
+              }`
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
         </li>
       )}
       <li>
-        <NavLink to="/forum">Forum</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `block rounded-md p-2 ${
+              isActive
+                ? "bg-amber-600 text-white"
+                : "hover:bg-amber-600 hover:text-white"
+            }`
+          }
+          to="/forum"
+        >
+          Forum
+        </NavLink>
       </li>
       {user ? (
         <li>
-          <NavLink to="/userProfile">User Profile</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `block rounded-md p-2 ${
+                isActive
+                  ? "bg-amber-600 text-white"
+                  : "hover:bg-amber-600 hover:text-white"
+              }`
+            }
+            to="/userProfile"
+          >
+            User Profile
+          </NavLink>
         </li>
       ) : (
         <></>
@@ -102,7 +168,11 @@ const Navbar = () => {
               }
             >
               <div className="mr-2 size-10 rounded-full border-2 border-amber-500">
-                <img className="rounded-full object-cover h-full w-full" alt="" src={user.photoURL} />
+                <img
+                  className="h-full w-full rounded-full object-cover"
+                  alt=""
+                  src={user.photoURL}
+                />
               </div>
             </div>
             <Link
