@@ -133,38 +133,51 @@ const TrainerDetails = () => {
                 </tr>
               </thead>
               <tbody>
-                {slots.map((slot, index) => (
-                  <tr key={index} className="bg-white">
-                    <td className="px-6 py-4">{slot.day}</td>
-                    <td className="px-6 py-4">{slot.slotName}</td>
-                    <td className="px-6 py-4">{slot.slotTime} hr</td>
-                    <td className="px-6 py-4">
-                      {slot.classesName.map((cls, i) => (
+                {slots.map(
+                  (slot, index) => (
+                    console.log(slot),
+                    (
+                      <tr key={index} className="bg-white">
+                        <td className="px-6 py-4">{slot.day}</td>
+                        <td className="px-6 py-4">{slot.slotName}</td>
+                        <td className="px-6 py-4">{slot.slotTime} hr</td>
+                        <td className="px-6 py-4">
+                          {/* {slot.classesName.map((cls, i) => (
                         <span
                           key={i}
                           className="mr-2 inline-block rounded-full bg-amber-500 px-2 py-1 font-medium text-white"
                         >
                           {cls}
                         </span>
-                      ))}
-                    </td>
-                    <td className="px-6 py-4">
-                      <Link
-                        to={`/booking/${trainer._id}`}
-                        state={{
-                          day: slot.day,
-                          sTime: slot.slotTime,
-                          sName: slot.slotName,
-                          slotId: slot._id,
-                          class_names: slot.classesName,
-                        }}
-                        className="btn text-lg border border-amber-500 bg-amber-500 text-white hover:bg-transparent hover:text-amber-500 hover:border-amber-500"
-                      >
-                        Book <MdKeyboardArrowRight className="inline" />
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                      ))} */}
+                          {
+                            <span
+                              className="mr-2 inline-block rounded-full bg-amber-500 px-2 py-1 font-medium text-white"
+                              key={slot.className}
+                            >
+                              {slot.className}
+                            </span>
+                          }
+                        </td>
+                        <td className="px-6 py-4">
+                          <Link
+                            to={`/booking/${trainer._id}`}
+                            state={{
+                              day: slot.day,
+                              sTime: slot.slotTime,
+                              sName: slot.slotName,
+                              slotId: slot._id,
+                              className: slot.className,
+                            }}
+                            className="btn border border-amber-500 bg-amber-500 text-lg text-white hover:border-amber-500 hover:bg-transparent hover:text-amber-500"
+                          >
+                            Book <MdKeyboardArrowRight className="inline" />
+                          </Link>
+                        </td>
+                      </tr>
+                    )
+                  ),
+                )}
               </tbody>
             </table>
           )}

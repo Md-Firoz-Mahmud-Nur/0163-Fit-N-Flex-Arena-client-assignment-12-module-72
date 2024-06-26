@@ -89,17 +89,19 @@ const AddNewSlot = () => {
 
     let allSlots = [];
     classDays.forEach((day) => {
-      allSlots.push({
-        slotName: name,
-        slotTime: time,
-        day,
-        classesName,
-        trainer: {
-          name: trainer?.name,
-          email: trainer?.email,
-          id: trainer?._id,
-        },
-        status: "available",
+      classesName.forEach((className) => {
+        allSlots.push({
+          slotName: name,
+          slotTime: time,
+          day,
+          className,
+          trainer: {
+            name: trainer?.name,
+            email: trainer?.email,
+            id: trainer?._id,
+          },
+          status: "available",
+        });
       });
     });
 
@@ -124,7 +126,7 @@ const AddNewSlot = () => {
         <title>Add New Slot | Fit N Flex Arena</title>
       </Helmet>
       <div className="flex h-full w-full items-center justify-center">
-        <div className="w-full   p-6  md:p-8 lg:w-10/12 lg:p-10 xl:w-3/4 my-20 rounded-3xl border border-amber-500 py-12 shadow-xl shadow-amber-200">
+        <div className="my-20 w-full rounded-3xl border border-amber-500 p-6 py-12 shadow-xl shadow-amber-200 md:p-8 lg:w-10/12 lg:p-10 xl:w-3/4">
           <form
             onSubmit={handleSubmit}
             className="w-full space-y-4 lg:space-y-6"

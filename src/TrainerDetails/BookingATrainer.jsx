@@ -16,9 +16,12 @@ const BookingATrainer = () => {
   const { user } = useAuth();
   const [plan, setPlan] = useState("");
   const [className, setClassName] = useState("");
+  console.log(className);
 
   const trainer = useLoaderData();
   const { state } = useLocation();
+  console.log(state);
+  // output {day: 'Wed', sTime: '1', sName: 'Morning', slotId: '667916382542544c55f214e4', className: 'Kickboxing'}
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -54,10 +57,18 @@ const BookingATrainer = () => {
       },
     };
 
+    console.log(bookingData);
     navigate("/payment", { state: { bookingData } });
   };
 
   if (!state) return <Navigate to="/" />;
+
+  const classOptions = [
+    {
+      value: state.className,
+      label: state.className,
+    },
+  ];
 
   return (
     <div className="py-8 md:py-12 lg:py-16">
@@ -295,7 +306,7 @@ const BookingATrainer = () => {
           </section>
           <section className="mt-10">
             <div className="flex items-center justify-center py-10 md:py-14 lg:py-20">
-              <div className="w-full space-y-3  border border-amber-500 shadow-xl p-6 shadow-amber-200 rounded-2xl md:p-8 lg:w-2/3 lg:space-y-5 lg:p-10 xl:w-1/2">
+              <div className="w-full space-y-3 rounded-2xl border border-amber-500 p-6 shadow-xl shadow-amber-200 md:p-8 lg:w-2/3 lg:space-y-5 lg:p-10 xl:w-1/2">
                 <p>
                   <span className="text-lg font-medium">Trainer Name :</span>{" "}
                   <span className="opacity-80">{trainer.name}</span>
@@ -321,9 +332,9 @@ const BookingATrainer = () => {
                     <Select
                       onChange={(e) => setClassName(e)}
                       label="Select Class"
-                      options={state.class_names.map((singleClassName) => ({
-                        value: singleClassName,
-                        label: singleClassName,
+                      options={classOptions.map(() => ({
+                        value: state.className,
+                        label: state.className,
                       }))}
                     ></Select>
                   </div>

@@ -123,6 +123,7 @@ const ManageSlots = () => {
                   </thead>
                   <tbody>
                     {slots.map((slot, i) => (
+                      console.log(slot),
                       <tr
                         key={i}
                         className="border-2 bg-white text-center hover:border-amber-500 hover:bg-gray-100 hover:shadow-md"
@@ -132,10 +133,18 @@ const ManageSlots = () => {
                         <td className="p-4">{slot.slotTime} hr</td>
                         <td className="p-4">
                           {
-                            <span className="font-semibold" key={i}>
-                              {slot.bookedBy?.class_name?.value}
+                            <span className="mr-2 inline-block rounded-full bg-amber-500 px-2 py-1 font-medium text-white" key={i}>
+                              {slot.className}
                             </span>
                           }
+                          {/* {slot.classesName.map((cls, i) => (
+                        <span
+                          key={i}
+                          className="mr-2 inline-block rounded-full bg-amber-500 px-2 py-1 font-medium text-white"
+                        >
+                          {cls}
+                        </span>
+                      ))} */}
                         </td>
                         <td
                           className={`p-4 ${slot.status === "booked" ? "text-red-500" : "text-green-500"}`}
