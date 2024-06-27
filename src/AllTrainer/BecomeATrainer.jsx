@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider";
 import Select from "react-select";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import CSS for react-toastify
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import useClassName from "../Hooks/useClassName";
 import { Helmet } from "react-helmet-async";
@@ -73,37 +73,30 @@ const BecomeATrainer = () => {
     const selectedTimeValues = selectedTimes.map((time) => time.value);
 
     try {
-      // Fetch user data to check status
       const userResponse = await fetch(
         `${import.meta.env.VITE_SERVER}/users/${email}`,
       );
       const userData = await userResponse.json();
 
-      // Check if user has a pending application
       if (userData.status === "pending") {
         toast.error("You have a pending application.", {
           autoClose: 1500,
         });
-
         setTimeout(() => {
           navigate(location?.state ? location.state : "/dashboard/activityLog");
         }, 1500);
-
         return;
       }
       if (userData.status === "resolved") {
         toast.error("You are already a trainer", {
           autoClose: 1500,
         });
-
         setTimeout(() => {
           navigate(location?.state ? location.state : "/dashboard/manageSlots");
         }, 1500);
-
         return;
       }
 
-      // Proceed with the PUT request to update user details
       const response = await fetch(
         `${import.meta.env.VITE_SERVER}/users/${email}`,
         {

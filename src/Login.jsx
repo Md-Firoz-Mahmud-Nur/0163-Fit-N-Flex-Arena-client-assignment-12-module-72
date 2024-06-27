@@ -44,21 +44,21 @@ const Login = () => {
   };
 
   const HandleGoogle = () => {
-    googleLogin().then((result) => {
+    googleLogin().then(async (result) => {
       const userInfo = {
         name: result.user?.displayName,
         email: result.user?.email,
-        photoURL: result.user?.photoURL,
+        photoUrl: result.user?.photoURL,
         role: "member",
       };
-      axiosPublic.post("/users", userInfo).then(() => {});
+      await axiosPublic.post("/users", userInfo).then(() => {});
 
       const userLastLoinTime = {
         lastSignInTime: result.user?.metadata?.lastSignInTime,
         lastLoginAt: result.user?.metadata?.lastLoginAt,
       };
 
-      axiosPublic
+      await axiosPublic
         .put(`/users/${result.user?.email}`, userLastLoinTime)
         .then(() => {});
 
