@@ -27,17 +27,17 @@ Welcome to Fit N Flex Arena, a website showcasing various features and offer a s
 2. **Navigate to the project directory**:
 
 ```bash
-cd fit-n-flex-arena
+cd 0163-Fit-N-Flex-Arena-client-assignment-12-module-72
 ```
 
 3. **Install dependencies**:
 
 ```bash
-npm install
+npm i
 ```
 
 4. **Start the development server**:
 
 ```bash
-npm start
+npm run dev
 ```
