@@ -18,6 +18,8 @@ Welcome to Fit N Flex Arena, a website showcasing various features and offer a s
 
 ## Installation Steps
 
+Use firebase environment variables to run this properly
+
 1. **Clone the repository**:
 
 ```bash
