@@ -19,10 +19,20 @@ Welcome to Fit N Flex Arena, a website showcasing various features and offer a s
 ## Installation Steps
 
 1. **Clone the repository**:
-   git clone https://github.com/Md-Firoz-Mahmud-Nur/0163-Fit-N-Flex-Arena-client-assignment-12-module-72.git
-   Navigate to the project directory:
-   cd fit-n-flex-arena
-   Install dependencies:
-   npm install
-   Start the development server:
-   npm start
+
+````bash
+ git clone https://github.com/Md-Firoz-Mahmud-Nur/0163-Fit-N-Flex-Arena-client-assignment-12-module-72.git
+
+2. **Navigate to the project directory**:
+ ```bash
+ cd fit-n-flex-arena
+3. **Install dependencies**:
+ ```bash
+ npm install
+
+4. **Start the development server**:
+
+
+ ```bash
+ npm start
+````
