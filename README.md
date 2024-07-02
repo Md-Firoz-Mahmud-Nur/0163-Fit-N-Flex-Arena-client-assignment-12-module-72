@@ -15,6 +15,7 @@ Welcome to Fit N Flex Arena, a website showcasing various features and offer a s
 - **Frontend**:React, JavaScript, TailwindCSS, CSS, HTML
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
+- **Other**: axios
 
 ## Installation Steps
 
