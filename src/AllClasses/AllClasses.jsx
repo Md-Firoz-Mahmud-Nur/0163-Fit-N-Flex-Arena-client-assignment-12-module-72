@@ -12,21 +12,25 @@ const AllClasses = () => {
   const [isClassLoading, setIsClassLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
 
-  const { isLoading } = useQuery({
+  const { data: allClassesData = [], isLoading } = useQuery({
     queryKey: ["allClasses", currentPage, search],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
         `/classes?page=${currentPage - 1}&search=${search}`,
       );
-      setAllClasses(data.result);
-      setTotalClass(data.matchedTrainers);
       return data;
     },
   });
 
   useEffect(() => {
     setIsClassLoading(isLoading);
-  }, [isLoading]);
+    setAllClasses(allClassesData.result);
+    if (allClassesData.matchedTrainers !== undefined) {
+      setTotalClass(allClassesData.matchedTrainers);
+    } else {
+      setTotalClass(0);
+    }
+  }, [isLoading, allClassesData]);
 
   const handleSearch = (e) => {
     e.preventDefault();
