@@ -21,9 +21,9 @@ const FeaturedClasses = () => {
           Featured Classes
         </h2>
         <p className="mb-6 text-center text-gray-700">
-          Discover a variety of engaging fitness classes at Fit N Flex Arena. From yoga
-          to HIIT, our expert-led sessions cater to all levels and keep you
-          motivated.
+          Discover a variety of engaging fitness classes at Fit N Flex Arena.
+          From yoga to HIIT, our expert-led sessions cater to all levels and
+          keep you motivated.
         </p>
         {isLoading ? (
           <div className="flex justify-center">
@@ -33,7 +33,7 @@ const FeaturedClasses = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {featuredClasses.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="flex flex-col overflow-hidden rounded-lg border border-amber-500 shadow-xl transition-shadow duration-300 hover:shadow-amber-300"
               >
                 <div

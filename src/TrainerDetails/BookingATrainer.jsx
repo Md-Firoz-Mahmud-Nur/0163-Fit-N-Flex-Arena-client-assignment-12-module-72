@@ -14,15 +14,11 @@ import { Helmet } from "react-helmet-async";
 
 const BookingATrainer = () => {
   const { user } = useAuth();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const trainer = useLoaderData();
   const [plan, setPlan] = useState("");
   const [className, setClassName] = useState("");
-  console.log(className);
-
-  const trainer = useLoaderData();
-  const { state } = useLocation();
-  console.log(state);
-  // output {day: 'Wed', sTime: '1', sName: 'Morning', slotId: '667916382542544c55f214e4', className: 'Kickboxing'}
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +53,6 @@ const BookingATrainer = () => {
       },
     };
 
-    console.log(bookingData);
     navigate("/payment", { state: { bookingData } });
   };
 

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import ClassCard from "./ClassCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const AllClasses = () => {
@@ -9,10 +9,10 @@ const AllClasses = () => {
   const [search, setSearch] = useState("");
   const [totalClass, setTotalClass] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [isClassLoading, setIsClassLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
 
-  const { data = {}, isLoading } = useQuery({
+  const { isLoading } = useQuery({
     queryKey: ["allClasses", currentPage, search],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
@@ -23,6 +23,10 @@ const AllClasses = () => {
       return data;
     },
   });
+
+  useEffect(() => {
+    setIsClassLoading(isLoading);
+  }, [isLoading]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -55,15 +59,13 @@ const AllClasses = () => {
           </form>
         </div>
 
-        {!isLoading && allClasses.length === 0 ? (
-          <div className="flex h-[30vh] items-center justify-center">
-            <p className="text-3xl text-red-500">
-              No class found
-            </p>
-          </div>
-        ) : isLoading ? (
+        {isClassLoading ? (
           <div className="flex justify-center">
             <span className="loading loading-dots loading-lg"></span>
+          </div>
+        ) : allClasses.length === 0 ? (
+          <div className="flex h-[30vh] items-center justify-center">
+            <p className="text-3xl text-red-500">No class found</p>
           </div>
         ) : (
           <>

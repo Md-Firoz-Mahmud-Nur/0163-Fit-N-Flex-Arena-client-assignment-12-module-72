@@ -41,7 +41,6 @@ ClassCard.propTypes = {
     description: PropTypes.string.isRequired,
     trainer: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.string.isRequired,
         photoUrl: PropTypes.string.isRequired,
       }),
     ).isRequired,

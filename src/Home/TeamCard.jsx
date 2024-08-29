@@ -37,7 +37,7 @@ TeamCard.propTypes = {
   team: PropTypes.shape({
     name: PropTypes.string.isRequired,
     photoUrl: PropTypes.string.isRequired,
-    experience: PropTypes.number.isRequired,
+    experience: PropTypes.string.isRequired,
     skills: PropTypes.arrayOf(PropTypes.string).isRequired,
     biography: PropTypes.string.isRequired,
   }).isRequired,

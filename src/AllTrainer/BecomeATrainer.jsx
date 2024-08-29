@@ -32,12 +32,6 @@ const BecomeATrainer = () => {
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [selectedDays, setSelectedDays] = useState([]);
   const [selectedTimes, setSelectedTimes] = useState([]);
-  // const [selectedGptSkills, setSelectedGptSkills] = useState([]);
-
-  // const handleSkillsChange = (selectedOptions) => {
-  //   setSelectedSkills(selectedOptions);
-  // };
-
 
   const handleSkillsChange = (skillName, checked) => {
     if (checked) {
@@ -51,7 +45,6 @@ const BecomeATrainer = () => {
       );
     }
   };
-
 
   const handleDaysChange = (selectedOptions) => {
     setSelectedDays(selectedOptions);
@@ -292,10 +285,16 @@ const BecomeATrainer = () => {
           <label className="label">
             <span className="label-text">Skills</span>
           </label>
-          <div className="input-group flex  flex-wrap">
+          <div className="input-group flex flex-wrap">
             {classes.map((skill) => (
-              <label key={skill.name} className=" cursor-pointer flex flex-row-reverse m-1 p-1 ">
-                <span className="label-text ml-1">{skill.name}{"   "}</span>
+              <label
+                key={skill.name}
+                className="m-1 flex cursor-pointer flex-row-reverse p-1"
+              >
+                <span className="label-text ml-1">
+                  {skill.name}
+                  {"   "}
+                </span>
                 <input
                   type="checkbox"
                   className="checkbox-warning checkbox"
@@ -304,7 +303,6 @@ const BecomeATrainer = () => {
                   }
                 />
               </label>
-
             ))}
           </div>
         </div>

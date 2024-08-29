@@ -22,8 +22,8 @@ const Team = () => {
         <p className="mb-8 text-center text-gray-700">
           Our team of dedicated fitness professionals is here to guide you on
           your fitness journey. With diverse expertise in personal training,
-          nutrition, and wellness, we're committed to helping you achieve your
-          health and fitness goals.
+          nutrition, and wellness, we&apos;re committed to helping you achieve
+          your health and fitness goals.
         </p>
 
         {isLoading ? (
